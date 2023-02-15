@@ -61,6 +61,25 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE dbo.Usuario
+        ///   SET
+        ///
+        ///      Telefono = @Telefono
+        ///      ,Celular = @Celular      
+        ///      ,Region = @Region
+        ///      ,Provincia = @Provincia
+        ///      ,Municipio = @Municipio
+        ///      ,Sector = @Sector
+        ///      ,Residencia = @Residencia
+        /// WHERE  ID_Usuario = @id.
+        /// </summary>
+        internal static string ActualizarUsuario {
+            get {
+                return ResourceManager.GetString("ActualizarUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT
         ///      Nombres
         ///      ,Apellidos
@@ -105,6 +124,15 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         internal static string ConsultaUsuario {
             get {
                 return ResourceManager.GetString("ConsultaUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id.
+        /// </summary>
+        internal static string EliminarUsuario {
+            get {
+                return ResourceManager.GetString("EliminarUsuario", resourceCulture);
             }
         }
         

@@ -117,6 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActualizarUsuario" xml:space="preserve">
+    <value>UPDATE dbo.Usuario
+   SET
+
+      Telefono = @Telefono
+      ,Celular = @Celular      
+      ,Region = @Region
+      ,Provincia = @Provincia
+      ,Municipio = @Municipio
+      ,Sector = @Sector
+      ,Residencia = @Residencia
+ WHERE  ID_Usuario = @id</value>
+    <comment>UPDATE dbo.Usuario
+   SET Nombres = @Nombres
+      ,Apellidos = @Apellidos
+      ,Identificacion = @Identificacion
+      ,Correo = @Correo
+      ,Clave = @Clave
+      ,Telefono = @Telefono
+      ,Celular = @Celular
+      ,Fecha_Nacimiento = @Fecha_Nacimiento
+      ,Lugar_Nacimiento = @Lugar_Nacimiento
+      ,Nacionalidad = @Nacionalidad
+      ,Region = @Region
+      ,Provincia = @Provincia
+      ,Municipio = @Municipio
+      ,Sector = @Sector
+      ,Residencia = @Residencia
+ WHERE  ID_Usuario = @id</comment>
+  </data>
   <data name="ConsultarInfoUsuarioDumy" xml:space="preserve">
     <value>SELECT
       Nombres
@@ -152,6 +182,9 @@
       ,Sector
       ,Residencia
   FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id</value>
+  </data>
+  <data name="EliminarUsuario" xml:space="preserve">
+    <value>Delete  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id</value>
   </data>
   <data name="InsertarUsuario" xml:space="preserve">
     <value>INSERT INTO dbo.Usuario

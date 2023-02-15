@@ -33,9 +33,19 @@ namespace SoftUNI.WebAPI.Logica.Usuarios
             _usuarioData.InsertarUsuario(usuario);
         }
 
+        public void ActualizarUsuario(Usuario usuario)
+        {
+            _usuarioData.ActualizarUsuario(usuario);
+        }
+
         public bool ExisteUsuario(string cedula)
         {
             return _usuarioData.ExisteUsuario(cedula);
+        }
+
+        public void EliminarUsuario(int id)
+        {
+            _usuarioData.EliminarUsuario(id);
         }
 
         public string EncriptarClave(string clave)

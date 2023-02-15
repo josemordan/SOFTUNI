@@ -92,31 +92,43 @@ namespace SoftUNI.WebAPI.Controllers
         }
 
         // PUT: api/Usuarios/5
-        public void Put(int id, [FromBody] string value)
+        //public Response Put(int id, [FromBody] Usuario usuario)
+        public Response Put([FromBody] Usuario usuario)
         {
+            Response respuesta = new Response();
             try
             {
-
+                _usuariosLogica.ActualizarUsuario(usuario);
+                var usuarioUpdated = _usuariosLogica.ConsultaUsuario(usuario.ID_Usuario);
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Actualizado Correctamente";
+                respuesta.Usuarios = usuarioUpdated;
             }
             catch (Exception ex)
             {
-
-                throw;
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+                respuesta.Usuarios = usuario;
             }
+            return respuesta;
         }
 
         // DELETE: api/Usuarios/5
-        public void Delete(int id)
+        public Response Delete(int id)
         {
+            Response respuesta = new Response();
             try
             {
-
+                _usuariosLogica.EliminarUsuario(id);
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Usuario Eliminado";
             }
             catch (Exception ex)
             {
-
-                throw;
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
             }
+            return respuesta;
         }
     }
 }

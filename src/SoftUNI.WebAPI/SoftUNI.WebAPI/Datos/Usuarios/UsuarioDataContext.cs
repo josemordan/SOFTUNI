@@ -20,7 +20,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 var cmd = cnn.CreateCommand();
                 cmd.CommandTimeout = 0;
                 cmd.CommandText = QuerysUsuarios.ConsultarInfoUsuarioDumy;
-                cmd.Parameters.Add("cedula", cedula);
+                cmd.Parameters.AddWithValue("cedula", cedula);
                 var dr = cmd.ExecuteReader();
                 if (!dr.HasRows) return null;
                 dr.Read();
@@ -96,6 +96,19 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
             }
         }
 
+        public void EliminarUsuario(int id)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.EliminarUsuario;
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public void InsertarUsuario(Usuario usuario)
         {
             using (var cnn = new Conexion().ObtenerConexion())
@@ -121,7 +134,34 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 cmd.Parameters.AddWithValue("Residencia", usuario.Residencia);
                 cmd.ExecuteNonQuery();
             }
+        }
 
+        public void ActualizarUsuario(Usuario usuario)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.ActualizarUsuario;
+                //cmd.Parameters.AddWithValue("Nombre", usuario.Nombres);
+                //cmd.Parameters.AddWithValue("Apellidos", usuario.Apellidos);
+                //cmd.Parameters.AddWithValue("Identificacion", usuario.Identificacion);
+                //cmd.Parameters.AddWithValue("Correo", usuario.Correo);
+                //cmd.Parameters.AddWithValue("Clave", usuario.Clave);
+                cmd.Parameters.AddWithValue("Telefono", usuario.Telefono);
+                cmd.Parameters.AddWithValue("Celular", usuario.Celular);
+                //cmd.Parameters.AddWithValue("Fecha_Nacimiento", usuario.Fecha_Nacimiento);
+                //cmd.Parameters.AddWithValue("Lugar_Nacimiento", usuario.Lugar_Nacimiento);
+                //cmd.Parameters.AddWithValue("Nacionalidad", usuario.Nacionalidad);
+                cmd.Parameters.AddWithValue("Region", usuario.Region);
+                cmd.Parameters.AddWithValue("Provincia", usuario.Provincia);
+                cmd.Parameters.AddWithValue("Municipio", usuario.Municipio);
+                cmd.Parameters.AddWithValue("Sector", usuario.Sector);
+                cmd.Parameters.AddWithValue("Residencia", usuario.Residencia);
+                cmd.Parameters.AddWithValue("id", usuario.ID_Usuario);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
