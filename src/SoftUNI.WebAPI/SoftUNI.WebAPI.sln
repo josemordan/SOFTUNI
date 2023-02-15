@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUNI.WebAPI", "SoftUNI.WebAPI\SoftUNI.WebAPI.csproj", "{A31188B8-FA49-4319-A7A6-A6D96DE95916}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A31188B8-FA49-4319-A7A6-A6D96DE95916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A31188B8-FA49-4319-A7A6-A6D96DE95916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A31188B8-FA49-4319-A7A6-A6D96DE95916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A31188B8-FA49-4319-A7A6-A6D96DE95916}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE06DC4C-6737-48F9-A266-9A58332B37C1}
+	EndGlobalSection
+EndGlobal
