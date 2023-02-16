@@ -48,6 +48,14 @@ namespace SoftUNI.WebAPI.Logica.Usuarios
             _usuarioData.EliminarUsuario(id);
         }
 
+        /////////////// Login
+        public Usuario ValidaLogin(string user, string clave)
+        {
+            var usuario = _usuarioData.ValidaLogin(user, EncriptarClave(clave));
+            if (usuario != null) usuario.Clave = DesEncriptarClave(usuario.Clave);
+            return usuario;
+        }
+
         public string EncriptarClave(string clave)
         {
             string result = string.Empty;

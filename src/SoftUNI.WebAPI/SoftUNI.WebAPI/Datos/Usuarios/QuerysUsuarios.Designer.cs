@@ -184,5 +184,30 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
                 return ResourceManager.GetString("ValidaExisteUser", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT  ID_Usuario
+        ///      ,Nombres
+        ///      ,Apellidos
+        ///      ,Identificacion
+        ///      ,Correo
+        ///      ,Clave
+        ///      ,Telefono
+        ///      ,Celular
+        ///      ,Fecha_Nacimiento
+        ///      ,Lugar_Nacimiento
+        ///      ,Nacionalidad
+        ///      ,Region
+        ///      ,Provincia
+        ///      ,Municipio
+        ///      ,Sector
+        ///      ,Residencia
+        ///  FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave.
+        /// </summary>
+        internal static string ValidaLoginUsuario {
+            get {
+                return ResourceManager.GetString("ValidaLoginUsuario", resourceCulture);
+            }
+        }
     }
 }

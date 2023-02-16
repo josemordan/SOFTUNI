@@ -1,4 +1,5 @@
 ﻿using SoftUNI.WebAPI.Logica.Usuarios;
+using SoftUNI.WebAPI.Models.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,30 +18,49 @@ namespace SoftUNI.WebAPI.Controllers
         }
 
         // GET: api/Login
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET: api/Login/5
-        public string Get(int id)
+        public Response Get(string usuario, string clave)
         {
-            return "value";
+            Response respuesta = new Response();
+            try
+            {
+                var userLogin=_usuariosLogica.ValidaLogin(usuario, clave);
+                if (userLogin == null)
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "Usuario O Clave incorrecta";
+                    return respuesta;
+                }
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Usuario Logueado";
+                respuesta.Usuarios = userLogin;
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
         }
 
-        // POST: api/Login
-        public void Post([FromBody]string value)
-        {
-        }
+        //// POST: api/Login
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
-        // PUT: api/Login/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT: api/Login/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE: api/Login/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE: api/Login/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

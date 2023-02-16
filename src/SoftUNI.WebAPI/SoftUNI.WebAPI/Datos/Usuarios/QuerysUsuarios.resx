@@ -230,4 +230,23 @@
       
   FROM SOFTUNI.dbo.Usuario where Identificacion = @cedula</value>
   </data>
+  <data name="ValidaLoginUsuario" xml:space="preserve">
+    <value>SELECT  ID_Usuario
+      ,Nombres
+      ,Apellidos
+      ,Identificacion
+      ,Correo
+      ,Clave
+      ,Telefono
+      ,Celular
+      ,Fecha_Nacimiento
+      ,Lugar_Nacimiento
+      ,Nacionalidad
+      ,Region
+      ,Provincia
+      ,Municipio
+      ,Sector
+      ,Residencia
+  FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave</value>
+  </data>
 </root>

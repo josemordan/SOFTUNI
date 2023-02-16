@@ -47,7 +47,6 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
 
         public Usuario ConsultarUsuario(int id)
         {
-
             using (var cnn = new Conexion().ObtenerConexion())
             {
                 cnn.Open();
@@ -161,6 +160,42 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 cmd.Parameters.AddWithValue("Residencia", usuario.Residencia);
                 cmd.Parameters.AddWithValue("id", usuario.ID_Usuario);
                 cmd.ExecuteNonQuery();
+            }
+        }
+    
+        public Usuario ValidaLogin(string user, string clave)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.ValidaLoginUsuario;
+                cmd.Parameters.AddWithValue("user", user);
+                cmd.Parameters.AddWithValue("clave", clave);
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return null;
+                dr.Read();
+                var usuario = new Usuario
+                {
+                    ID_Usuario = dr.IsDBNull(dr.GetOrdinal("ID_Usuario")) ? 0 : int.Parse(dr["ID_Usuario"].ToString()),
+                    Nombres = dr.IsDBNull(dr.GetOrdinal("Nombres")) ? string.Empty : dr["Nombres"].ToString(),
+                    Apellidos = dr.IsDBNull(dr.GetOrdinal("Apellidos")) ? string.Empty : dr["Apellidos"].ToString(),
+                    Identificacion = dr.IsDBNull(dr.GetOrdinal("Identificacion")) ? string.Empty : dr["Identificacion"].ToString(),
+                    Correo = dr.IsDBNull(dr.GetOrdinal("Correo")) ? string.Empty : dr["Correo"].ToString(),
+                    Clave = dr.IsDBNull(dr.GetOrdinal("Clave")) ? string.Empty : dr["Clave"].ToString(),
+                    Telefono = dr.IsDBNull(dr.GetOrdinal("Telefono")) ? string.Empty : dr["Telefono"].ToString(),
+                    Celular = dr.IsDBNull(dr.GetOrdinal("Celular")) ? string.Empty : dr["Celular"].ToString(),
+                    Fecha_Nacimiento = dr.IsDBNull(dr.GetOrdinal("Fecha_Nacimiento")) ? new DateTime(1900, 1, 1) : DateTime.Parse(dr["Fecha_Nacimiento"].ToString()),
+                    Lugar_Nacimiento = dr.IsDBNull(dr.GetOrdinal("Lugar_Nacimiento")) ? string.Empty : dr["Lugar_Nacimiento"].ToString(),
+                    Nacionalidad = dr.IsDBNull(dr.GetOrdinal("Nacionalidad")) ? string.Empty : dr["Nacionalidad"].ToString(),
+                    Region = dr.IsDBNull(dr.GetOrdinal("Region")) ? string.Empty : dr["Region"].ToString(),
+                    Provincia = dr.IsDBNull(dr.GetOrdinal("Provincia")) ? string.Empty : dr["Provincia"].ToString(),
+                    Municipio = dr.IsDBNull(dr.GetOrdinal("Municipio")) ? string.Empty : dr["Municipio"].ToString(),
+                    Sector = dr.IsDBNull(dr.GetOrdinal("Sector")) ? string.Empty : dr["Sector"].ToString(),
+                    Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString()
+                };
+                return usuario;
             }
         }
     }
