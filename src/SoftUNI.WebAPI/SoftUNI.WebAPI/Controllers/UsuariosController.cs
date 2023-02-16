@@ -1,4 +1,6 @@
-﻿using SoftUNI.WebAPI.Logica.Usuarios;
+﻿using EmailValidation;
+using SoftUNI.WebAPI.Logica;
+using SoftUNI.WebAPI.Logica.Usuarios;
 using SoftUNI.WebAPI.Models.Usuarios;
 using System;
 using System.Collections.Generic;
@@ -48,6 +50,20 @@ namespace SoftUNI.WebAPI.Controllers
             Response respuesta = new Response();
             try
             {
+                if (!EmailValidator.Validate(usuario.Correo))
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "Correo Incorrecto";
+                    respuesta.Usuarios = usuario;
+                    return respuesta;
+                }
+                if(!new ValidaCedulas().CedulaValida(usuario.Identificacion))
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "Identificacion Incorrecta";
+                    respuesta.Usuarios = usuario;
+                    return respuesta;
+                }
                 if (_usuariosLogica.ExisteUsuario(usuario.Identificacion))
                 {
                     respuesta.Respuesta = false;

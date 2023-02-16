@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EmailValidation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=60f3df2f38e92638, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmailValidation.1.0.8\lib\net452\EmailValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -169,6 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logica\ValidaCedulas.cs" />
     <Compile Include="Models\Usuarios\Response.cs" />
     <Compile Include="Logica\Usuarios\UsuariosLogica.cs" />
     <Compile Include="Models\Usuarios\Usuario.cs" />
