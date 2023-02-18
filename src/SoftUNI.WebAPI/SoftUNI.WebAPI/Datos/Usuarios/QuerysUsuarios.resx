@@ -181,10 +181,11 @@
       ,Municipio
       ,Sector
       ,Residencia
-  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id</value>
+  FROM dbo.Usuario where ID_Usuario = @id</value>
   </data>
   <data name="EliminarUsuario" xml:space="preserve">
-    <value>Delete  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id</value>
+    <value>update dbo.Usuario set activo = 'false' where ID_Usuario = @id</value>
+    <comment>Delete  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id</comment>
   </data>
   <data name="InsertarUsuario" xml:space="preserve">
     <value>INSERT INTO dbo.Usuario
@@ -228,7 +229,7 @@
     <value>SELECT  
       Nombres
       
-  FROM SOFTUNI.dbo.Usuario where Identificacion = @cedula</value>
+  FROM SOFTUNI.dbo.Usuario where Identificacion = @cedula and activo = 'true'</value>
   </data>
   <data name="ValidaLoginUsuario" xml:space="preserve">
     <value>SELECT  ID_Usuario
@@ -247,6 +248,6 @@
       ,Municipio
       ,Sector
       ,Residencia
-  FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave</value>
+  FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave and activo = 'true'</value>
   </data>
 </root>

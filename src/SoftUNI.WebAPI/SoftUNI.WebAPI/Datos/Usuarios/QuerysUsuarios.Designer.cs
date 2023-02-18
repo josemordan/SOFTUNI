@@ -119,7 +119,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///      ,Municipio
         ///      ,Sector
         ///      ,Residencia
-        ///  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id.
+        ///  FROM dbo.Usuario where ID_Usuario = @id.
         /// </summary>
         internal static string ConsultaUsuario {
             get {
@@ -128,7 +128,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id.
+        ///   Looks up a localized string similar to update dbo.Usuario set activo = &apos;false&apos; where ID_Usuario = @id.
         /// </summary>
         internal static string EliminarUsuario {
             get {
@@ -177,7 +177,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///   Looks up a localized string similar to SELECT  
         ///      Nombres
         ///      
-        ///  FROM SOFTUNI.dbo.Usuario where Identificacion = @cedula.
+        ///  FROM SOFTUNI.dbo.Usuario where Identificacion = @cedula and activo = &apos;true&apos;.
         /// </summary>
         internal static string ValidaExisteUser {
             get {
@@ -202,7 +202,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///      ,Municipio
         ///      ,Sector
         ///      ,Residencia
-        ///  FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave.
+        ///  FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave and activo = &apos;true&apos;.
         /// </summary>
         internal static string ValidaLoginUsuario {
             get {

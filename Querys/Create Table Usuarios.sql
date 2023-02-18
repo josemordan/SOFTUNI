@@ -24,6 +24,9 @@ CREATE TABLE [dbo].[Usuario](
 	[Provincia] [varchar](100) NULL,
 	[Municipio] [varchar](200) NULL,
 	[Sector] [varchar](200) NULL,
-	[Residencia] [varchar](250) NULL
+	[Residencia] [varchar](250) NULL,
+	Activo bit default 'true'
 	)
 GO
+
+
