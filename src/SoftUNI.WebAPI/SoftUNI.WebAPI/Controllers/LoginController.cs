@@ -24,9 +24,9 @@ namespace SoftUNI.WebAPI.Controllers
         //}
 
         // GET: api/Login/5
-        public Response Get(string usuario, string clave)
+        public ResponseUsuario Get(string usuario, string clave)
         {
-            Response respuesta = new Response();
+            ResponseUsuario respuesta = new ResponseUsuario();
             try
             {
                 var userLogin=_usuariosLogica.ValidaLogin(usuario, clave);

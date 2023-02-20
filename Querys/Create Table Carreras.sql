@@ -15,4 +15,5 @@ CREATE TABLE [dbo].[Carreras](
 ) 
 GO
 
-
+ALTER TABLE [Carreras]
+ADD FOREIGN KEY ([ID_Universidad]) REFERENCES Universidades(ID);

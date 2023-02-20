@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SoftUNI.WebAPI.Models.Usuarios
 {
-    public class Response
+    public class ResponseUsuario
     {
         public bool Respuesta { get; set; }
         public string Mensaje { get; set; }

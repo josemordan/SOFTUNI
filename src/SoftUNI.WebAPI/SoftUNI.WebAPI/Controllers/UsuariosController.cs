@@ -26,9 +26,9 @@ namespace SoftUNI.WebAPI.Controllers
         //}
 
         // GET: api/Usuarios/5
-        public Response Get(int id)
+        public ResponseUsuario Get(int id)
         {
-            Response respuesta = new Response();
+            ResponseUsuario respuesta = new ResponseUsuario();
             try
             {
                 var usuario = _usuariosLogica.ConsultaUsuario(id);
@@ -45,9 +45,9 @@ namespace SoftUNI.WebAPI.Controllers
         }
 
         // POST: api/Usuarios
-        public Response Post([FromBody] Usuario usuario)
+        public ResponseUsuario Post([FromBody] Usuario usuario)
         {
-            Response respuesta = new Response();
+            ResponseUsuario respuesta = new ResponseUsuario();
             try
             {
                 if (!EmailValidator.Validate(usuario.Correo))
@@ -109,9 +109,9 @@ namespace SoftUNI.WebAPI.Controllers
 
         // PUT: api/Usuarios/5
         //public Response Put(int id, [FromBody] Usuario usuario)
-        public Response Put([FromBody] Usuario usuario)
+        public ResponseUsuario Put([FromBody] Usuario usuario)
         {
-            Response respuesta = new Response();
+            ResponseUsuario respuesta = new ResponseUsuario();
             try
             {
                 _usuariosLogica.ActualizarUsuario(usuario);
@@ -130,9 +130,9 @@ namespace SoftUNI.WebAPI.Controllers
         }
 
         // DELETE: api/Usuarios/5
-        public Response Delete(int id)
+        public ResponseUsuario Delete(int id)
         {
-            Response respuesta = new Response();
+            ResponseUsuario respuesta = new ResponseUsuario();
             try
             {
                 _usuariosLogica.EliminarUsuario(id);

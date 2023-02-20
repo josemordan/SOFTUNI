@@ -160,9 +160,16 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UniversidadesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Datos\Conexion.cs" />
+    <Compile Include="Datos\Universidades\QuerysUniversidades.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuerysUniversidades.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Universidades\UniversidadDataContext.cs" />
     <Compile Include="Datos\Usuarios\QuerysUsuarios.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,8 +179,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logica\Universidades\UniversidadesLogica.cs" />
     <Compile Include="Logica\ValidaCedulas.cs" />
-    <Compile Include="Models\Usuarios\Response.cs" />
+    <Compile Include="Models\Universidades\Carrera.cs" />
+    <Compile Include="Models\Universidades\ResponseUniversidad.cs" />
+    <Compile Include="Models\Universidades\Universidad.cs" />
+    <Compile Include="Models\Usuarios\ResponseUsuario.cs" />
     <Compile Include="Logica\Usuarios\UsuariosLogica.cs" />
     <Compile Include="Models\Usuarios\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -263,6 +274,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Datos\Universidades\QuerysUniversidades.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QuerysUniversidades.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Datos\Usuarios\QuerysUsuarios.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>QuerysUsuarios.Designer.cs</LastGenOutput>
