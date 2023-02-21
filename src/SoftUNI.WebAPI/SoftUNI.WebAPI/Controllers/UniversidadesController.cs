@@ -62,6 +62,34 @@ namespace SoftUNI.WebAPI.Controllers
             return respuesta;
         }
 
+        public ResponseUniversidad GetSolicitud(int id_user)
+        {
+            ResponseUniversidad respuesta = new ResponseUniversidad();
+            try
+            {
+                var solicitud = _universidadesLogica.ConsultarSolicitud(id_user);
+                if (solicitud == null)
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "Usaurio No Posee Solicitud Activa";
+                    return respuesta;
+                }
+                var universidades = _universidadesLogica.ConsultarUniversidades().Where(x => x.ID == solicitud.ID_Universidad).ToList();
+                universidades[0].Carreras = _universidadesLogica.ConsultarCarrera().Where(x => x.ID == solicitud.ID_Carrera).ToList();
+                universidades[0].ID_Carrera = solicitud.ID_Carrera;
+                universidades[0].ID_Usuario = solicitud.ID_Usuario;
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Solicitud Consultada Con Exito";
+                respuesta.Universidades = universidades;
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
+
         // POST: api/Universidades
         public ResponseUniversidad Post([FromBody] Universidad universidad)
         {
@@ -87,15 +115,15 @@ namespace SoftUNI.WebAPI.Controllers
             return respuesta;
         }
 
-        // PUT: api/Universidades/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT: api/Universidades/5
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE: api/Universidades/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE: api/Universidades/5
+        //public void Delete(int id)
+        //{
+        //}
         
     }
 }

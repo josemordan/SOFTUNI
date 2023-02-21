@@ -29,5 +29,10 @@ namespace SoftUNI.WebAPI.Logica.Universidades
         {
             _universidadDataContext.InsertarSolicitud(solicitud);
         }
+
+        public Solicitud ConsultarSolicitud(int id_user)
+        {
+           return _universidadDataContext.ConsultarSolicitud(id_user);
+        }
     }
 }

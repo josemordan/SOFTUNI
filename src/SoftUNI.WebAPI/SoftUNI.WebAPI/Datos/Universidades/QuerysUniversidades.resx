@@ -123,6 +123,13 @@
       ,NOMBRE
   FROM dbo.Carreras</value>
   </data>
+  <data name="ConsultarSolicitudes" xml:space="preserve">
+    <value>SELECT top 1 ID
+      ,ID_Estudiante as us
+      ,ID_Universidad as uni
+      ,ID_Carrera as carr
+  FROM dbo.SolicitudUniversidad where ID_Estudiante = @id</value>
+  </data>
   <data name="ConsultarUniversidades" xml:space="preserve">
     <value>SELECT  ID
       ,NOMBRE

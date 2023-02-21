@@ -73,6 +73,19 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT top 1 ID
+        ///      ,ID_Estudiante as us
+        ///      ,ID_Universidad as uni
+        ///      ,ID_Carrera as carr
+        ///  FROM dbo.SolicitudUniversidad where ID_Estudiante = @id.
+        /// </summary>
+        internal static string ConsultarSolicitudes {
+            get {
+                return ResourceManager.GetString("ConsultarSolicitudes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT  ID
         ///      ,NOMBRE
         ///      ,Region

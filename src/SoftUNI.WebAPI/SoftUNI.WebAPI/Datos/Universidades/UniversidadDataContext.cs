@@ -74,5 +74,28 @@ namespace SoftUNI.WebAPI.Datos.Universidades
                 var dr = cmd.ExecuteReader();
             }
         }
+
+        public Solicitud ConsultarSolicitud(int id_user)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUniversidades.ConsultarSolicitudes;
+                cmd.Parameters.AddWithValue("id", id_user);
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return null;
+                dr.Read();
+                Solicitud solicitud = new Solicitud
+                {
+                    ID = dr.IsDBNull(dr.GetOrdinal("ID")) ? 0 : int.Parse(dr["ID"].ToString()),
+                    ID_Usuario = dr.IsDBNull(dr.GetOrdinal("us")) ? 0 : int.Parse(dr["us"].ToString()),
+                    ID_Universidad = dr.IsDBNull(dr.GetOrdinal("uni")) ? 0 : int.Parse(dr["uni"].ToString()),
+                    ID_Carrera = dr.IsDBNull(dr.GetOrdinal("carr")) ? 0 : int.Parse(dr["carr"].ToString())
+                };
+                return solicitud;
+            }
+        }
     }
 }

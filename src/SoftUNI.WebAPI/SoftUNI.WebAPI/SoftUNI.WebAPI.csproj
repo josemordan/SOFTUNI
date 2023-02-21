@@ -183,6 +183,7 @@
     <Compile Include="Logica\ValidaCedulas.cs" />
     <Compile Include="Models\Universidades\Carrera.cs" />
     <Compile Include="Models\Universidades\ResponseUniversidad.cs" />
+    <Compile Include="Models\Universidades\Solicitud.cs" />
     <Compile Include="Models\Universidades\Universidad.cs" />
     <Compile Include="Models\Usuarios\ResponseUsuario.cs" />
     <Compile Include="Logica\Usuarios\UsuariosLogica.cs" />
