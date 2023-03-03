@@ -164,12 +164,19 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\DocumentosEstudiantesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UniversidadesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Datos\Conexion.cs" />
+    <Compile Include="Datos\Documentos\DocumentosDataContext.cs" />
+    <Compile Include="Datos\Documentos\QuerysDocumentos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuerysDocumentos.resx</DependentUpon>
+    </Compile>
     <Compile Include="Datos\Universidades\QuerysUniversidades.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -185,8 +192,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logica\Documentos\DocumentosLogica.cs" />
     <Compile Include="Logica\Universidades\UniversidadesLogica.cs" />
     <Compile Include="Logica\ValidaCedulas.cs" />
+    <Compile Include="Models\Documentos\Documento.cs" />
+    <Compile Include="Models\Documentos\ResponseDocumento.cs" />
     <Compile Include="Models\Universidades\Carrera.cs" />
     <Compile Include="Models\Universidades\ResponseUniversidad.cs" />
     <Compile Include="Models\Universidades\Solicitud.cs" />
@@ -281,6 +291,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Datos\Documentos\QuerysDocumentos.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QuerysDocumentos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Datos\Universidades\QuerysUniversidades.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>QuerysUniversidades.Designer.cs</LastGenOutput>

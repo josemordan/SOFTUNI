@@ -74,7 +74,7 @@ namespace SoftUNI.WebAPI.Controllers
                 if (solicitud == null)
                 {
                     respuesta.Respuesta = false;
-                    respuesta.Mensaje = "Usaurio No Posee Solicitud Activa";
+                    respuesta.Mensaje = "Usuario No Posee Solicitud Activa";
                     return respuesta;
                 }
                 var universidades = _universidadesLogica.ConsultarUniversidades().Where(x => x.ID == solicitud.ID_Universidad).ToList();
