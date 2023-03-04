@@ -2,6 +2,7 @@
 using SoftUNI.WebAPI.Models.Documentos;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -33,6 +34,19 @@ namespace SoftUNI.WebAPI.Logica.Documentos
         public decimal ConsultarTarifas(int id_doc)
         {
             return _documentosDataContext.ConsultarTarifa(id_doc);
+        }
+
+        public string ConvertirPDFtoBase64(string ruta)
+        {
+            Byte[] bytes = File.ReadAllBytes(ruta);
+            String file = Convert.ToBase64String(bytes);
+            return file;
+        }
+
+        public void ConvertirBase64toPDF(string base64,string ruta)
+        {
+            Byte[] bytes = Convert.FromBase64String(base64);
+            File.WriteAllBytes(ruta, bytes);
         }
     }
 }
