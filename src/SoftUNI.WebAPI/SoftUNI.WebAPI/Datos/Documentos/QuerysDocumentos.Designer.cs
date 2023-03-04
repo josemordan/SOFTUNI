@@ -82,8 +82,10 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         ///      ,Fecha
         ///      ,Estado_Documento
         ///	  ,Ruta
+        ///	  ,c.Monto
         ///  FROM dbo.DocumentosEstudiantes b
-        ///  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and ID_Usuario=@id.
+        ///  inner join dbo.Tarifas c on b.ID = c.ID_Documento
+        ///  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID.
         /// </summary>
         internal static string ConsultarDocumentos {
             get {
@@ -109,6 +111,17 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         internal static string InsertarDocumento {
             get {
                 return ResourceManager.GetString("InsertarDocumento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT 
+        ///      Monto
+        ///  FROM dbo.Tarifas where id_docdumento=@doc.
+        /// </summary>
+        internal static string ObtenerTarifaDocumento {
+            get {
+                return ResourceManager.GetString("ObtenerTarifaDocumento", resourceCulture);
             }
         }
     }

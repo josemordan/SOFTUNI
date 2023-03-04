@@ -133,8 +133,10 @@
       ,Fecha
       ,Estado_Documento
 	  ,Ruta
+	  ,c.Monto
   FROM dbo.DocumentosEstudiantes b
-  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and ID_Usuario=@id</value>
+  inner join dbo.Tarifas c on b.ID = c.ID_Documento
+  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID</value>
   </data>
   <data name="InsertarDocumento" xml:space="preserve">
     <value>INSERT INTO dbo.RelacionEstudiantesDocumentos
@@ -150,5 +152,10 @@
            ,@Estado_Documento
            ,@Ruta
 		   )</value>
+  </data>
+  <data name="ObtenerTarifaDocumento" xml:space="preserve">
+    <value>SELECT 
+      Monto
+  FROM dbo.Tarifas where id_docdumento=@doc</value>
   </data>
 </root>

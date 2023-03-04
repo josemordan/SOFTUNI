@@ -30,7 +30,8 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                         ID_Usuario = dr.IsDBNull(dr.GetOrdinal("ID_Usuario")) ? 0 : int.Parse(dr["ID_Usuario"].ToString()),
                         Fecha = dr.IsDBNull(dr.GetOrdinal("Fecha")) ? new DateTime(1990, 1, 1) : DateTime.Parse(dr["Fecha"].ToString()),
                         Estado = dr.IsDBNull(dr.GetOrdinal("Estado_Documento")) ? "No Cargado" : dr["Estado_Documento"].ToString(),
-                        Ruta = dr.IsDBNull(dr.GetOrdinal("Ruta")) ? string.Empty : dr["Ruta"].ToString()
+                        Ruta = dr.IsDBNull(dr.GetOrdinal("Ruta")) ? string.Empty : dr["Ruta"].ToString(),
+                        Tarifa = dr.IsDBNull(dr.GetOrdinal("Monto")) ? 0 : decimal.Parse(dr["Monto"].ToString()),
                     });
                 }
                 return lista;
@@ -68,6 +69,22 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
                 cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public decimal ConsultarTarifa(int id_doc)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.ObtenerTarifaDocumento;
+                cmd.Parameters.AddWithValue("doc", id_doc);
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return 0;
+                dr.Read();
+                return dr.IsDBNull(dr.GetOrdinal("Monto")) ? 0 : decimal.Parse(dr["Monto"].ToString());
             }
         }
     }

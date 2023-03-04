@@ -29,5 +29,10 @@ namespace SoftUNI.WebAPI.Logica.Documentos
         {
             _documentosDataContext.ActualizarDocumento(documento);
         }
+
+        public decimal ConsultarTarifas(int id_doc)
+        {
+            return _documentosDataContext.ConsultarTarifa(id_doc);
+        }
     }
 }

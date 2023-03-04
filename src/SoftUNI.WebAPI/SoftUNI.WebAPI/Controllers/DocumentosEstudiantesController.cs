@@ -93,6 +93,26 @@ namespace SoftUNI.WebAPI.Controllers
             return respuesta;
         }
 
+
+        public ResponseDocumento GetTarifa(int documentoTarifa)
+        {
+            ResponseDocumento respuesta = new ResponseDocumento();
+            try
+            {
+                var documentos = _documentosLogica.ConsultarDocumentos(documentoTarifa);
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Documentos Consultados Con Exito";
+                respuesta.Documentos = documentos;
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
+
+
         // DELETE: api/DocumentosEstudiantes/5
         public void Delete(int id)
         {
