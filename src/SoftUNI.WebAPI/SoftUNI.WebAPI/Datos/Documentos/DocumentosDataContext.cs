@@ -65,7 +65,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 cmd.CommandText = QuerysDocumentos.ActualizarDocumento;
                 cmd.Parameters.AddWithValue("Fecha", documento.Fecha);
                 cmd.Parameters.AddWithValue("Estado_Documento", documento.Estado);
-                cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
+                //cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
                 cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
                 cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
                 cmd.ExecuteNonQuery();

@@ -64,7 +64,6 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         ///   Looks up a localized string similar to UPDATE dbo.RelacionEstudiantesDocumentos
         ///   SET Fecha = @Fecha
         ///      ,Estado_Documento = @Estado_Documento
-        ///      ,Ruta = @Ruta
         /// WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario.
         /// </summary>
         internal static string ActualizarDocumento {
