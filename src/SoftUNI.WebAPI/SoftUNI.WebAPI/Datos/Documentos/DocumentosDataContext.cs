@@ -71,6 +71,21 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 cmd.ExecuteNonQuery();
             }
         }
+        
+        public void BorrarDocumento(int id_doc, int id_user)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.BorrarDocumento;
+                cmd.Parameters.AddWithValue("ID_Documento", id_doc);
+                cmd.Parameters.AddWithValue("ID_Usuario", id_user);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
 
         public decimal ConsultarTarifa(int id_doc)
         {

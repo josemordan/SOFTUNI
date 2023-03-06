@@ -31,6 +31,12 @@ namespace SoftUNI.WebAPI.Logica.Documentos
             _documentosDataContext.ActualizarDocumento(documento);
         }
 
+        public void BorrarDocumento(int id_doc, int id_user)
+        {
+            _documentosDataContext.BorrarDocumento(id_doc,id_user);
+        }
+
+
         public decimal ConsultarTarifas(int id_doc)
         {
             return _documentosDataContext.ConsultarTarifa(id_doc);

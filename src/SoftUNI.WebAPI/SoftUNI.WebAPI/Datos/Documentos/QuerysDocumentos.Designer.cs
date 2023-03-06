@@ -73,6 +73,15 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to delete from dbo.RelacionEstudiantesDocumentos where ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario.
+        /// </summary>
+        internal static string BorrarDocumento {
+            get {
+                return ResourceManager.GetString("BorrarDocumento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT 
         ///	   b.ID as id_documento
         ///	  ,b.Nombre_Documento

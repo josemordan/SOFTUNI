@@ -113,9 +113,28 @@ namespace SoftUNI.WebAPI.Controllers
         }
 
 
-        // DELETE: api/DocumentosEstudiantes/5
-        public void Delete(int id)
+        /// <summary>
+        /// Borrar Documento Guardado
+        /// </summary>
+        /// <param name="id_doc">ID Documento a Borrar</param>
+        /// <param name="id_user">ID del Usaurio En sesion</param>
+        /// <returns></returns>
+        public ResponseDocumento Delete(int id_doc, int id_user)
         {
+            ResponseDocumento respuesta = new ResponseDocumento();
+            try
+            {
+                _documentosLogica.BorrarDocumento(id_doc, id_user);
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Documento Borrado Correctamente";
+                respuesta.Documentos = _documentosLogica.ConsultarDocumentos();
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
         }
     }
 }

@@ -128,6 +128,9 @@
       ,Ruta = @Ruta
  WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</comment>
   </data>
+  <data name="BorrarDocumento" xml:space="preserve">
+    <value>delete from dbo.RelacionEstudiantesDocumentos where ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</value>
+  </data>
   <data name="ConsultarDocumentos" xml:space="preserve">
     <value>SELECT 
 	   b.ID as id_documento
