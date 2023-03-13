@@ -229,7 +229,7 @@
     <value>SELECT  
       Nombres
       
-  FROM SOFTUNI.dbo.Usuario where Identificacion = @cedula and activo = 'true'</value>
+  FROM dbo.Usuario where Identificacion = @cedula and activo = 'true'</value>
   </data>
   <data name="ValidaLoginUsuario" xml:space="preserve">
     <value>SELECT  ID_Usuario

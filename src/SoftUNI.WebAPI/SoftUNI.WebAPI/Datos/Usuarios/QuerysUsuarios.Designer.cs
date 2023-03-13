@@ -177,7 +177,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///   Looks up a localized string similar to SELECT  
         ///      Nombres
         ///      
-        ///  FROM SOFTUNI.dbo.Usuario where Identificacion = @cedula and activo = &apos;true&apos;.
+        ///  FROM dbo.Usuario where Identificacion = @cedula and activo = &apos;true&apos;.
         /// </summary>
         internal static string ValidaExisteUser {
             get {
