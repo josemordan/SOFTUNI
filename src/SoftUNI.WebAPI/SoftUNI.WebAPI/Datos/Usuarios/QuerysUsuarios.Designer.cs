@@ -61,6 +61,15 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to update usuario set matricula = @matricula where ID_Usuario=@id.
+        /// </summary>
+        internal static string ActualizarMatriculaUsuario {
+            get {
+                return ResourceManager.GetString("ActualizarMatriculaUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UPDATE dbo.Usuario
         ///   SET
         ///
@@ -119,6 +128,8 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///      ,Municipio
         ///      ,Sector
         ///      ,Residencia
+        ///	  ,Matricula
+        ///	  ,Tipo
         ///  FROM dbo.Usuario where ID_Usuario = @id.
         /// </summary>
         internal static string ConsultaUsuario {
@@ -133,6 +144,24 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         internal static string EliminarUsuario {
             get {
                 return ResourceManager.GetString("EliminarUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select max(matricula) Matricula from Matriculas.
+        /// </summary>
+        internal static string GenerarMatricula {
+            get {
+                return ResourceManager.GetString("GenerarMatricula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insert into Matriculas values(@matricula).
+        /// </summary>
+        internal static string InsertarMatricula {
+            get {
+                return ResourceManager.GetString("InsertarMatricula", resourceCulture);
             }
         }
         
@@ -154,6 +183,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///			   ,Municipio
         ///			   ,Sector
         ///			   ,Residencia
+        ///			   ,Tipo
         ///		  )
         ///     VALUES
         ///           (
@@ -165,7 +195,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///			   ,@Telefono
         ///			   ,@Celular
         ///			   ,@Fecha_Nacimiento
-        ///			   ,@Lugar_Nacim [rest of string was truncated]&quot;;.
+        ///			    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InsertarUsuario {
             get {

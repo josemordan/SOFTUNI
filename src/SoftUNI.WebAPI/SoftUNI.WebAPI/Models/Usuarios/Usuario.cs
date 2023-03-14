@@ -23,5 +23,7 @@ namespace SoftUNI.WebAPI.Models.Usuarios
         public string Municipio { get; set; }
         public string Sector { get; set; }
         public string Residencia { get; set; }
+        public string Matricula { get; set; }
+        public int Tipo { get; set; }
     }
 }

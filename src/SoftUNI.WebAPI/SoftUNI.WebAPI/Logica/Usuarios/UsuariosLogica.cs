@@ -48,6 +48,14 @@ namespace SoftUNI.WebAPI.Logica.Usuarios
             _usuarioData.EliminarUsuario(id);
         }
 
+        public long GenerarMatricula(int id_usuario)
+        {
+            long matricula = _usuarioData.GenerarMatricula(id_usuario)+1;
+            _usuarioData.InsertarMatricula(matricula);
+            _usuarioData.ActualizarMatriculaUsuario(id_usuario, matricula);
+            return matricula;
+        }
+
         /////////////// Login
         public Usuario ValidaLogin(string user, string clave)
         {

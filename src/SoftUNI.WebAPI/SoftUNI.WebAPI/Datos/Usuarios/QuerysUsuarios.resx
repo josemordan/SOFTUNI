@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActualizarMatriculaUsuario" xml:space="preserve">
+    <value>update usuario set matricula = @matricula where ID_Usuario=@id</value>
+  </data>
   <data name="ActualizarUsuario" xml:space="preserve">
     <value>UPDATE dbo.Usuario
    SET
@@ -181,14 +184,77 @@
       ,Municipio
       ,Sector
       ,Residencia
+	  ,Matricula
+	  ,Tipo
   FROM dbo.Usuario where ID_Usuario = @id</value>
+    <comment>SELECT  ID_Usuario
+      ,Nombres
+      ,Apellidos
+      ,Identificacion
+      ,Correo
+      ,Clave
+      ,Telefono
+      ,Celular
+      ,Fecha_Nacimiento
+      ,Lugar_Nacimiento
+      ,Nacionalidad
+      ,Region
+      ,Provincia
+      ,Municipio
+      ,Sector
+      ,Residencia
+  FROM dbo.Usuario where ID_Usuario = @id</comment>
   </data>
   <data name="EliminarUsuario" xml:space="preserve">
     <value>update dbo.Usuario set activo = 'false' where ID_Usuario = @id</value>
     <comment>Delete  FROM SOFTUNI.dbo.Usuario where ID_Usuario = @id</comment>
   </data>
+  <data name="GenerarMatricula" xml:space="preserve">
+    <value>select max(matricula) Matricula from Matriculas</value>
+  </data>
+  <data name="InsertarMatricula" xml:space="preserve">
+    <value>insert into Matriculas values(@matricula)</value>
+  </data>
   <data name="InsertarUsuario" xml:space="preserve">
     <value>INSERT INTO dbo.Usuario
+           (
+				Nombres
+			   ,Apellidos
+			   ,Identificacion
+			   ,Correo
+			   ,Clave
+			   ,Telefono
+			   ,Celular
+			   ,Fecha_Nacimiento
+			   ,Lugar_Nacimiento
+			   ,Nacionalidad
+			   ,Region
+			   ,Provincia
+			   ,Municipio
+			   ,Sector
+			   ,Residencia
+			   ,Tipo
+		  )
+     VALUES
+           (
+				@Nombre
+			   ,@Apellidos
+			   ,@Identificacion
+			   ,@Correo
+			   ,@Clave
+			   ,@Telefono
+			   ,@Celular
+			   ,@Fecha_Nacimiento
+			   ,@Lugar_Nacimiento
+			   ,@Nacionalidad
+			   ,@Region
+			   ,@Provincia
+			   ,@Municipio
+			   ,@Sector
+			   ,@Residencia
+			   ,@tipo
+		   )</value>
+    <comment>INSERT INTO dbo.Usuario
            (
 				Nombres
 			   ,Apellidos
@@ -223,7 +289,7 @@
 			   ,@Municipio
 			   ,@Sector
 			   ,@Residencia
-		   )</value>
+		   )</comment>
   </data>
   <data name="ValidaExisteUser" xml:space="preserve">
     <value>SELECT  

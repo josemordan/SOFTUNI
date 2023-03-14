@@ -59,7 +59,7 @@ namespace SoftUNI.WebAPI.Controllers
                     respuesta.Usuarios = usuario;
                     return respuesta;
                 }
-                if(!new ValidaCedulas().CedulaValida(usuario.Identificacion))
+                if (!new ValidaCedulas().CedulaValida(usuario.Identificacion))
                 {
                     respuesta.Respuesta = false;
                     respuesta.Mensaje = "Identificacion Incorrecta";
@@ -140,6 +140,25 @@ namespace SoftUNI.WebAPI.Controllers
                 _usuariosLogica.EliminarUsuario(id);
                 respuesta.Respuesta = true;
                 respuesta.Mensaje = "Usuario Eliminado";
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
+
+        public ResponseUsuario GenerarMatricula(int ID_Usuario)
+        {
+            ResponseUsuario respuesta = new ResponseUsuario();
+            try
+            {
+                _usuariosLogica.GenerarMatricula(ID_Usuario);
+                var usuario = _usuariosLogica.ConsultaUsuario(ID_Usuario);
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Matricula Generada Correctamente";
+                respuesta.Usuarios = usuario;
             }
             catch (Exception ex)
             {

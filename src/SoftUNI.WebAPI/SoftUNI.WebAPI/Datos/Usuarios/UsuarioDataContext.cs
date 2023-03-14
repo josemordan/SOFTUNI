@@ -74,7 +74,9 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                     Provincia = dr.IsDBNull(dr.GetOrdinal("Provincia")) ? string.Empty : dr["Provincia"].ToString(),
                     Municipio = dr.IsDBNull(dr.GetOrdinal("Municipio")) ? string.Empty : dr["Municipio"].ToString(),
                     Sector = dr.IsDBNull(dr.GetOrdinal("Sector")) ? string.Empty : dr["Sector"].ToString(),
-                    Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString()
+                    Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString(),
+                    Matricula = dr.IsDBNull(dr.GetOrdinal("Matricula")) ? string.Empty : dr["Matricula"].ToString(),
+                    Tipo = dr.IsDBNull(dr.GetOrdinal("Tipo")) ? 0 : int.Parse(dr["Tipo"].ToString())
                 };
                 return usuario;
             }
@@ -131,6 +133,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 cmd.Parameters.AddWithValue("Municipio", usuario.Municipio);
                 cmd.Parameters.AddWithValue("Sector", usuario.Sector);
                 cmd.Parameters.AddWithValue("Residencia", usuario.Residencia);
+                cmd.Parameters.AddWithValue("Tipo", usuario.Tipo);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -162,7 +165,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 cmd.ExecuteNonQuery();
             }
         }
-    
+
         public Usuario ValidaLogin(string user, string clave)
         {
             using (var cnn = new Conexion().ObtenerConexion())
@@ -198,5 +201,47 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 return usuario;
             }
         }
+
+        public long GenerarMatricula(int Id_Usuario)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.GenerarMatricula;
+                var dr = cmd.ExecuteReader();
+                dr.Read();
+                return dr.IsDBNull(dr.GetOrdinal("Matricula")) ? 0 : long.Parse(dr["Matricula"].ToString());
+            }
+        }
+
+        public void InsertarMatricula(long Matricula)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.InsertarMatricula;
+                cmd.Parameters.AddWithValue("matricula", Matricula);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void ActualizarMatriculaUsuario(int id_user, long matricula)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.ActualizarMatriculaUsuario;
+                cmd.Parameters.AddWithValue("matricula", matricula);
+                cmd.Parameters.AddWithValue("id", id_user);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }
