@@ -149,10 +149,23 @@
       ,Fecha
       ,Estado_Documento
 	  ,Ruta
+	  ,Legalizacion
 	  ,c.Monto
   FROM dbo.DocumentosEstudiantes b
   inner join dbo.Tarifas c on b.ID = c.ID_Documento
   left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and id_usuario=@id</value>
+    <comment>SELECT 
+	   b.ID as id_documento
+	  ,b.Nombre_Documento
+	  ,b.Institucion
+      ,ID_Usuario
+      ,Fecha
+      ,Estado_Documento
+	  ,Ruta
+	  ,c.Monto
+  FROM dbo.DocumentosEstudiantes b
+  inner join dbo.Tarifas c on b.ID = c.ID_Documento
+  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and id_usuario=@id</comment>
   </data>
   <data name="ConsutlarDocumentosRequeridos" xml:space="preserve">
     <value>SELECT 

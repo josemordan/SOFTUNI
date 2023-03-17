@@ -111,6 +111,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         ///      ,Fecha
         ///      ,Estado_Documento
         ///	  ,Ruta
+        ///	  ,Legalizacion
         ///	  ,c.Monto
         ///  FROM dbo.DocumentosEstudiantes b
         ///  inner join dbo.Tarifas c on b.ID = c.ID_Documento
