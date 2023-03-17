@@ -128,8 +128,17 @@
       ,Ruta = @Ruta
  WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</comment>
   </data>
+  <data name="ActualizarDocumentoRequerido" xml:space="preserve">
+    <value>UPDATE dbo.RelacionEstuDocRequeridos
+   SET Fecha = @Fecha
+      ,Estado_Documento = @Estado_Documento
+ WHERE ID_Doc_Req = @ID_Documento and ID_Usuario = @ID_Usuario</value>
+  </data>
   <data name="BorrarDocumento" xml:space="preserve">
     <value>delete from dbo.RelacionEstudiantesDocumentos where ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</value>
+  </data>
+  <data name="BorrarDocumentoRequerido" xml:space="preserve">
+    <value>delete from dbo.RelacionEstuDocRequeridos where ID_Doc_Req = @ID_Documento and ID_Usuario = @ID_Usuario</value>
   </data>
   <data name="ConsultarDocumentos" xml:space="preserve">
     <value>SELECT 
@@ -143,11 +152,38 @@
 	  ,c.Monto
   FROM dbo.DocumentosEstudiantes b
   inner join dbo.Tarifas c on b.ID = c.ID_Documento
-  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID</value>
+  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and id_usuario=@id</value>
+  </data>
+  <data name="ConsutlarDocumentosRequeridos" xml:space="preserve">
+    <value>SELECT 
+	   b.ID as id_documento
+	  ,b.Nombre
+	  ,b.Institucion
+      ,ID_Usuario
+      ,Fecha
+      ,Estado_Documento
+	  ,Ruta
+  FROM dbo.DocumentosRequeridos b
+  left join  dbo.RelacionEstuDocRequeridos a on a.ID_Doc_Req =b.ID and id_usuario=@id</value>
   </data>
   <data name="InsertarDocumento" xml:space="preserve">
     <value>INSERT INTO dbo.RelacionEstudiantesDocumentos
            (ID_Documento
+           ,ID_Usuario
+           ,Fecha
+           ,Estado_Documento
+           ,Ruta)
+     VALUES
+           (@ID_Documento
+           ,@ID_Usuario
+           ,@Fecha
+           ,@Estado_Documento
+           ,@Ruta
+		   )</value>
+  </data>
+  <data name="InsertarDocumentoRequerido" xml:space="preserve">
+    <value>INSERT INTO dbo.RelacionEstuDocRequeridos
+           (ID_Doc_Req
            ,ID_Usuario
            ,Fecha
            ,Estado_Documento

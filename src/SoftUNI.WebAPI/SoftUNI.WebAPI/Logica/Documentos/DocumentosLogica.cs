@@ -58,5 +58,26 @@ namespace SoftUNI.WebAPI.Logica.Documentos
             Byte[] bytes = Convert.FromBase64String(base64);
             File.WriteAllBytes(ruta, bytes);
         }
+
+        //Documentos Requeridos
+        public List<Documento> ConsultarDocumentosRequeridos(int id_usuario = 0)
+        {
+            return _documentosDataContext.ConsultarDocumentosRequeridos(id_usuario);
+        }
+
+        public void InsertDocumentoRequerido(Documento documento)
+        {
+            _documentosDataContext.InsertarDocumentoRequeridos(documento);
+        }
+
+        public void ActualizarDocumentoRequerido(Documento documento)
+        {
+            _documentosDataContext.ActualizarDocumentoRequerido(documento);
+        }
+
+        public void BorrarDocumentoRequerido(int id_doc, int id_user)
+        {
+            _documentosDataContext.BorrarDocumentoRequerido(id_doc, id_user);
+        }
     }
 }

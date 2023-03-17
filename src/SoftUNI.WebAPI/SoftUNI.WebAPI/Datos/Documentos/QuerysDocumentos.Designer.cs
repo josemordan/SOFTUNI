@@ -73,11 +73,32 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE dbo.RelacionEstuDocRequeridos
+        ///   SET Fecha = @Fecha
+        ///      ,Estado_Documento = @Estado_Documento
+        /// WHERE ID_Doc_Req = @ID_Documento and ID_Usuario = @ID_Usuario.
+        /// </summary>
+        internal static string ActualizarDocumentoRequerido {
+            get {
+                return ResourceManager.GetString("ActualizarDocumentoRequerido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to delete from dbo.RelacionEstudiantesDocumentos where ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario.
         /// </summary>
         internal static string BorrarDocumento {
             get {
                 return ResourceManager.GetString("BorrarDocumento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to delete from dbo.RelacionEstuDocRequeridos where ID_Doc_Req = @ID_Documento and ID_Usuario = @ID_Usuario.
+        /// </summary>
+        internal static string BorrarDocumentoRequerido {
+            get {
+                return ResourceManager.GetString("BorrarDocumentoRequerido", resourceCulture);
             }
         }
         
@@ -93,11 +114,29 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         ///	  ,c.Monto
         ///  FROM dbo.DocumentosEstudiantes b
         ///  inner join dbo.Tarifas c on b.ID = c.ID_Documento
-        ///  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID.
+        ///  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and id_usuario=@id.
         /// </summary>
         internal static string ConsultarDocumentos {
             get {
                 return ResourceManager.GetString("ConsultarDocumentos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT 
+        ///	   b.ID as id_documento
+        ///	  ,b.Nombre
+        ///	  ,b.Institucion
+        ///      ,ID_Usuario
+        ///      ,Fecha
+        ///      ,Estado_Documento
+        ///	  ,Ruta
+        ///  FROM dbo.DocumentosRequeridos b
+        ///  left join  dbo.RelacionEstuDocRequeridos a on a.ID_Doc_Req =b.ID and id_usuario=@id.
+        /// </summary>
+        internal static string ConsutlarDocumentosRequeridos {
+            get {
+                return ResourceManager.GetString("ConsutlarDocumentosRequeridos", resourceCulture);
             }
         }
         
@@ -119,6 +158,27 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         internal static string InsertarDocumento {
             get {
                 return ResourceManager.GetString("InsertarDocumento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO dbo.RelacionEstuDocRequeridos
+        ///           (ID_Doc_Req
+        ///           ,ID_Usuario
+        ///           ,Fecha
+        ///           ,Estado_Documento
+        ///           ,Ruta)
+        ///     VALUES
+        ///           (@ID_Documento
+        ///           ,@ID_Usuario
+        ///           ,@Fecha
+        ///           ,@Estado_Documento
+        ///           ,@Ruta
+        ///		   ).
+        /// </summary>
+        internal static string InsertarDocumentoRequerido {
+            get {
+                return ResourceManager.GetString("InsertarDocumentoRequerido", resourceCulture);
             }
         }
         

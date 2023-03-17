@@ -119,5 +119,84 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 return dr.IsDBNull(dr.GetOrdinal("Monto")) ? 0 : decimal.Parse(dr["Monto"].ToString());
             }
         }
+
+        public List<Documento> ConsultarDocumentosRequeridos(int id_usuario)
+        {
+            var lista = new List<Documento>();
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.ConsutlarDocumentosRequeridos;
+                cmd.Parameters.AddWithValue("id", id_usuario);
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return lista;
+                while (dr.Read())
+                {
+                    lista.Add(new Documento
+                    {
+                        ID = dr.IsDBNull(dr.GetOrdinal("id_documento")) ? 0 : int.Parse(dr["id_documento"].ToString()),
+                        Nombre = dr.IsDBNull(dr.GetOrdinal("Nombre")) ? string.Empty : dr["Nombre"].ToString(),
+                        Institucion = dr.IsDBNull(dr.GetOrdinal("Institucion")) ? string.Empty : dr["Institucion"].ToString(),
+                        ID_Usuario = dr.IsDBNull(dr.GetOrdinal("ID_Usuario")) ? 0 : int.Parse(dr["ID_Usuario"].ToString()),
+                        Fecha = dr.IsDBNull(dr.GetOrdinal("Fecha")) ? new DateTime(1990, 1, 1) : DateTime.Parse(dr["Fecha"].ToString()),
+                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado_Documento")) ? "No Cargado" : dr["Estado_Documento"].ToString(),
+                        Ruta = dr.IsDBNull(dr.GetOrdinal("Ruta")) ? string.Empty : dr["Ruta"].ToString()
+                    });
+                }
+                return lista;
+            }
+        }
+
+        public void InsertarDocumentoRequeridos(Documento documento)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.InsertarDocumentoRequerido;
+                cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
+                cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
+                cmd.Parameters.AddWithValue("Fecha", documento.Fecha);
+                cmd.Parameters.AddWithValue("Estado_Documento", documento.Estado);
+                cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void ActualizarDocumentoRequerido(Documento documento)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.ActualizarDocumentoRequerido;
+                cmd.Parameters.AddWithValue("Fecha", documento.Fecha);
+                cmd.Parameters.AddWithValue("Estado_Documento", documento.Estado);
+                //cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
+                cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
+                cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void BorrarDocumentoRequerido(int id_doc, int id_user)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.BorrarDocumentoRequerido;
+                cmd.Parameters.AddWithValue("ID_Documento", id_doc);
+                cmd.Parameters.AddWithValue("ID_Usuario", id_user);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
     }
 }
