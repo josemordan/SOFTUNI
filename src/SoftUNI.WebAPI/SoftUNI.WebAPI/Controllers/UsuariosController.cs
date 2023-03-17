@@ -85,8 +85,8 @@ namespace SoftUNI.WebAPI.Controllers
                 usuario.Nombres = user.Nombres;
                 usuario.Apellidos = user.Apellidos;
                 usuario.Identificacion = user.Identificacion;
-                usuario.Telefono = user.Telefono;
-                usuario.Celular = user.Celular;
+                //usuario.Telefono = user.Telefono;
+                //usuario.Celular = user.Celular;
                 usuario.Fecha_Nacimiento = user.Fecha_Nacimiento;
                 usuario.Lugar_Nacimiento = user.Lugar_Nacimiento;
                 usuario.Nacionalidad = user.Nacionalidad;
