@@ -120,7 +120,7 @@
   <data name="ActualizarDocumento" xml:space="preserve">
     <value>UPDATE dbo.RelacionEstudiantesDocumentos
    SET Fecha = @Fecha
-      ,Estado_Documento = @Estado_Documento
+      ,Estado_Documento = @Estado_Documento  ,Ruta = @Ruta
  WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</value>
     <comment>UPDATE dbo.RelacionEstudiantesDocumentos
    SET Fecha = @Fecha
@@ -188,6 +188,21 @@
            ,ID_Usuario
            ,Fecha
            ,Estado_Documento
+		   ,Fisico
+		   ,Legalizado)
+     VALUES
+           (@ID_Documento
+           ,@ID_Usuario
+           ,@Fecha
+           ,@Estado_Documento
+		   ,@Fisico
+		   ,@Legalizar
+		   )</value>
+    <comment>INSERT INTO dbo.RelacionEstudiantesDocumentos
+           (ID_Documento
+           ,ID_Usuario
+           ,Fecha
+           ,Estado_Documento
            ,Ruta
 		   ,Fisico
 		   ,Legalizado)
@@ -199,19 +214,6 @@
            ,@Ruta
 		   ,@Fisico
 		   ,@Legalizar
-		   )</value>
-    <comment>INSERT INTO dbo.RelacionEstudiantesDocumentos
-           (ID_Documento
-           ,ID_Usuario
-           ,Fecha
-           ,Estado_Documento
-           ,Ruta)
-     VALUES
-           (@ID_Documento
-           ,@ID_Usuario
-           ,@Fecha
-           ,@Estado_Documento
-           ,@Ruta
 		   )</comment>
   </data>
   <data name="InsertarDocumentoRequerido" xml:space="preserve">

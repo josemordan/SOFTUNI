@@ -53,7 +53,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
                 cmd.Parameters.AddWithValue("Fecha", documento.Fecha);
                 cmd.Parameters.AddWithValue("Estado_Documento", documento.Estado);
-                cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
+                //cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
                 cmd.Parameters.AddWithValue("Fisico", documento.Fisico);
                 cmd.Parameters.AddWithValue("Legalizar", documento.Legalizar);
                 cmd.ExecuteNonQuery();
@@ -70,7 +70,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 cmd.CommandText = QuerysDocumentos.ActualizarDocumento;
                 cmd.Parameters.AddWithValue("Fecha", documento.Fecha);
                 cmd.Parameters.AddWithValue("Estado_Documento", documento.Estado);
-                //cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
+                cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
                 cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
                 cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
                 cmd.ExecuteNonQuery();
