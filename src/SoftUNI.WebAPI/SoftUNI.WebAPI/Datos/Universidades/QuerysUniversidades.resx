@@ -138,7 +138,7 @@
       ,Municipio
       ,Sector
       ,Residencia
-      ,Localicacion
+      ,Localicacion,Imagen
   FROM dbo.UNIVERSIDADES</value>
   </data>
   <data name="InsertarSolicitud" xml:space="preserve">

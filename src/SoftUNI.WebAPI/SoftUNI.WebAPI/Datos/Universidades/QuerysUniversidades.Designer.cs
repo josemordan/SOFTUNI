@@ -93,7 +93,7 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         ///      ,Municipio
         ///      ,Sector
         ///      ,Residencia
-        ///      ,Localicacion
+        ///      ,Localicacion,Imagen
         ///  FROM dbo.UNIVERSIDADES.
         /// </summary>
         internal static string ConsultarUniversidades {

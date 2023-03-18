@@ -15,6 +15,7 @@ namespace SoftUNI.WebAPI.Models.Universidades
         public string Sector { get; set; }
         public string Residencia { get; set; }
         public string Localizacion { get; set; }
+        public string Imagen { get; set; }
         public int ID_Carrera { get; set; }
         public List<Carrera> Carreras { get; set; }
         public int ID_Usuario { get; set; }

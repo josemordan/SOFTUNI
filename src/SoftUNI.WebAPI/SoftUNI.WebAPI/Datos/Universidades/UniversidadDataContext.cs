@@ -29,7 +29,8 @@ namespace SoftUNI.WebAPI.Datos.Universidades
                         Provincia = dr.IsDBNull(dr.GetOrdinal("Provincia")) ? string.Empty : dr["Provincia"].ToString(),
                         Municipio = dr.IsDBNull(dr.GetOrdinal("Municipio")) ? string.Empty : dr["Municipio"].ToString(),
                         Sector = dr.IsDBNull(dr.GetOrdinal("Sector")) ? string.Empty : dr["Sector"].ToString(),
-                        Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString()
+                        Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString(),
+                        Imagen = dr.IsDBNull(dr.GetOrdinal("Imagen")) ? string.Empty : dr["Imagen"].ToString()
                     });
                 }
                 return lista;
