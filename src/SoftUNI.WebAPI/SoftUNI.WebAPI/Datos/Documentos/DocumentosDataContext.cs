@@ -29,7 +29,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                         Institucion = dr.IsDBNull(dr.GetOrdinal("Institucion")) ? string.Empty : dr["Institucion"].ToString(),
                         ID_Usuario = dr.IsDBNull(dr.GetOrdinal("ID_Usuario")) ? 0 : int.Parse(dr["ID_Usuario"].ToString()),
                         Fecha = dr.IsDBNull(dr.GetOrdinal("Fecha")) ? new DateTime(1990, 1, 1) : DateTime.Parse(dr["Fecha"].ToString()),
-                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado_Documento")) ? "No Cargado" : dr["Estado_Documento"].ToString(),
+                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado_Documento")) ? 1 : int.Parse(dr["Estado_Documento"].ToString()),
                         Ruta = dr.IsDBNull(dr.GetOrdinal("Ruta")) ? string.Empty : dr["Ruta"].ToString(),
                         Legalizacion = dr.IsDBNull(dr.GetOrdinal("Legalizacion")) ? false : Boolean.Parse( dr["Legalizacion"].ToString()),
                         Tarifa = dr.IsDBNull(dr.GetOrdinal("Monto")) ? 0 : decimal.Parse(dr["Monto"].ToString()),
@@ -142,7 +142,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                         Institucion = dr.IsDBNull(dr.GetOrdinal("Institucion")) ? string.Empty : dr["Institucion"].ToString(),
                         ID_Usuario = dr.IsDBNull(dr.GetOrdinal("ID_Usuario")) ? 0 : int.Parse(dr["ID_Usuario"].ToString()),
                         Fecha = dr.IsDBNull(dr.GetOrdinal("Fecha")) ? new DateTime(1990, 1, 1) : DateTime.Parse(dr["Fecha"].ToString()),
-                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado_Documento")) ? "No Cargado" : dr["Estado_Documento"].ToString(),
+                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado_Documento")) ? 1 : int.Parse(dr["Estado_Documento"].ToString()),
                         Ruta = dr.IsDBNull(dr.GetOrdinal("Ruta")) ? string.Empty : dr["Ruta"].ToString()
                     });
                 }

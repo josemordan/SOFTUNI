@@ -12,7 +12,7 @@ namespace SoftUNI.WebAPI.Models.Documentos
         public string Nombre { get; set; }
         public string Institucion { get; set; }
         public DateTime Fecha { get; set; }
-        public string Estado { get; set; }
+        public int Estado { get; set; }
         public string Ruta { get; set; }
         public bool Legalizacion { get; set; }
         public decimal Tarifa { get; set; }

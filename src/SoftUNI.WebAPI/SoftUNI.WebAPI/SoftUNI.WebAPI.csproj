@@ -166,6 +166,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\DocumentosEstudiantesController.cs" />
     <Compile Include="Controllers\DocumentosRequeridosController.cs" />
+    <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LegalizacionDocumentosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -178,6 +179,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QuerysDocumentos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Estados\EstadosDataContext.cs" />
+    <Compile Include="Datos\Estados\QuerysEstados.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuerysEstados.resx</DependentUpon>
     </Compile>
     <Compile Include="Datos\Universidades\QuerysUniversidades.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -195,10 +202,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logica\Documentos\DocumentosLogica.cs" />
+    <Compile Include="Logica\Estados\EstadosLogica.cs" />
     <Compile Include="Logica\Universidades\UniversidadesLogica.cs" />
     <Compile Include="Logica\ValidaCedulas.cs" />
     <Compile Include="Models\Documentos\Documento.cs" />
     <Compile Include="Models\Documentos\ResponseDocumento.cs" />
+    <Compile Include="Models\Estados\EstadosDocumentos.cs" />
+    <Compile Include="Models\Estados\ResponseEstados.cs" />
     <Compile Include="Models\Universidades\Carrera.cs" />
     <Compile Include="Models\Universidades\ResponseUniversidad.cs" />
     <Compile Include="Models\Universidades\Solicitud.cs" />
@@ -298,6 +308,10 @@
     <EmbeddedResource Include="Datos\Documentos\QuerysDocumentos.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>QuerysDocumentos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Datos\Estados\QuerysEstados.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QuerysEstados.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Datos\Universidades\QuerysUniversidades.resx">
       <Generator>ResXFileCodeGenerator</Generator>

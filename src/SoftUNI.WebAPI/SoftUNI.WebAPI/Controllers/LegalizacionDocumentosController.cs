@@ -58,7 +58,7 @@ namespace SoftUNI.WebAPI.Controllers
             ResponseDocumento respuesta = new ResponseDocumento();
             try
             {
-                documento.Estado = "Legalizado";
+                documento.Estado = 4;
                 documento.Fecha = DateTime.Now;
                 _documentosLogica.LegalizarDocumento(documento);
                 respuesta.Respuesta = true;
