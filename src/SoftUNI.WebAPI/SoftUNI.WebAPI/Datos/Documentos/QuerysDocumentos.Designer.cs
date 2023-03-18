@@ -113,6 +113,8 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         ///	  ,Ruta
         ///	  ,Legalizacion
         ///	  ,c.Monto
+        ///	  ,Fisico
+        ///	  ,Legalizado
         ///  FROM dbo.DocumentosEstudiantes b
         ///  inner join dbo.Tarifas c on b.ID = c.ID_Documento
         ///  left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and id_usuario=@id.
@@ -147,13 +149,17 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         ///           ,ID_Usuario
         ///           ,Fecha
         ///           ,Estado_Documento
-        ///           ,Ruta)
+        ///           ,Ruta
+        ///		   ,Fisico
+        ///		   ,Legalizado)
         ///     VALUES
         ///           (@ID_Documento
         ///           ,@ID_Usuario
         ///           ,@Fecha
         ///           ,@Estado_Documento
         ///           ,@Ruta
+        ///		   ,@Fisico
+        ///		   ,@Legalizar
         ///		   ).
         /// </summary>
         internal static string InsertarDocumento {

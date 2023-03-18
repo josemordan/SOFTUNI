@@ -62,8 +62,8 @@ namespace SoftUNI.WebAPI.Controllers
             ResponseDocumento respuesta = new ResponseDocumento();
             try
             {
-                documento.Estado = 1;
-                documento.Ruta = _documentosLogica.ConvertirPDFtoBase64(documento.Ruta);
+                documento.Estado = 2;
+                documento.Ruta = documento.Ruta;
                 _documentosLogica.InsertDocumentoRequerido(documento);
                 respuesta.Respuesta = true;
                 respuesta.Mensaje = "Documento Insertado Correctamente";

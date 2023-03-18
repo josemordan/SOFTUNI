@@ -33,6 +33,8 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                         Ruta = dr.IsDBNull(dr.GetOrdinal("Ruta")) ? string.Empty : dr["Ruta"].ToString(),
                         Legalizacion = dr.IsDBNull(dr.GetOrdinal("Legalizacion")) ? false : Boolean.Parse( dr["Legalizacion"].ToString()),
                         Tarifa = dr.IsDBNull(dr.GetOrdinal("Monto")) ? 0 : decimal.Parse(dr["Monto"].ToString()),
+                        Fisico = dr.IsDBNull(dr.GetOrdinal("Fisico")) ? false : Boolean.Parse(dr["Fisico"].ToString()),
+                        Legalizar = dr.IsDBNull(dr.GetOrdinal("Legalizado")) ? false : Boolean.Parse(dr["Legalizado"].ToString()),
                     });
                 }
                 return lista;
@@ -52,6 +54,8 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 cmd.Parameters.AddWithValue("Fecha", documento.Fecha);
                 cmd.Parameters.AddWithValue("Estado_Documento", documento.Estado);
                 cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
+                cmd.Parameters.AddWithValue("Fisico", documento.Fisico);
+                cmd.Parameters.AddWithValue("Legalizar", documento.Legalizar);
                 cmd.ExecuteNonQuery();
             }
         }

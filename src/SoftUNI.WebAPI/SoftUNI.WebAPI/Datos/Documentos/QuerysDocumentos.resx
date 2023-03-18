@@ -151,6 +151,8 @@
 	  ,Ruta
 	  ,Legalizacion
 	  ,c.Monto
+	  ,Fisico
+	  ,Legalizado
   FROM dbo.DocumentosEstudiantes b
   inner join dbo.Tarifas c on b.ID = c.ID_Documento
   left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and id_usuario=@id</value>
@@ -162,6 +164,7 @@
       ,Fecha
       ,Estado_Documento
 	  ,Ruta
+	  ,Legalizacion
 	  ,c.Monto
   FROM dbo.DocumentosEstudiantes b
   inner join dbo.Tarifas c on b.ID = c.ID_Documento
@@ -185,6 +188,23 @@
            ,ID_Usuario
            ,Fecha
            ,Estado_Documento
+           ,Ruta
+		   ,Fisico
+		   ,Legalizado)
+     VALUES
+           (@ID_Documento
+           ,@ID_Usuario
+           ,@Fecha
+           ,@Estado_Documento
+           ,@Ruta
+		   ,@Fisico
+		   ,@Legalizar
+		   )</value>
+    <comment>INSERT INTO dbo.RelacionEstudiantesDocumentos
+           (ID_Documento
+           ,ID_Usuario
+           ,Fecha
+           ,Estado_Documento
            ,Ruta)
      VALUES
            (@ID_Documento
@@ -192,7 +212,7 @@
            ,@Fecha
            ,@Estado_Documento
            ,@Ruta
-		   )</value>
+		   )</comment>
   </data>
   <data name="InsertarDocumentoRequerido" xml:space="preserve">
     <value>INSERT INTO dbo.RelacionEstuDocRequeridos
