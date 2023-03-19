@@ -1,4 +1,5 @@
 ﻿using SoftUNI.WebAPI.Datos.Documentos;
+using SoftUNI.WebAPI.Logica.Estados;
 using SoftUNI.WebAPI.Models.Documentos;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,14 @@ namespace SoftUNI.WebAPI.Logica.Documentos
             _documentosDataContext = new DocumentosDataContext();
         }
 
-        public List<Documento> ConsultarDocumentos(int id_usuario=0)
+        public List<Documento> ConsultarDocumentos(int id_usuario = 0)
         {
-            return _documentosDataContext.ConsultarDocumentos(id_usuario);
+            var documentos = _documentosDataContext.ConsultarDocumentos(id_usuario);
+            foreach (var item in documentos)
+            {
+                item.DescripcionEstado = new EstadosLogica().ConsultarEstados().Where(x => x.ID == item.Estado).ToList().Select(x => x.Estado).FirstOrDefault();
+            }
+            return documentos;
         }
 
         public void InsertDocumento(Documento documento)
@@ -33,7 +39,7 @@ namespace SoftUNI.WebAPI.Logica.Documentos
 
         public void BorrarDocumento(int id_doc, int id_user)
         {
-            _documentosDataContext.BorrarDocumento(id_doc,id_user);
+            _documentosDataContext.BorrarDocumento(id_doc, id_user);
         }
 
         public void LegalizarDocumento(Documento documento)
@@ -53,7 +59,7 @@ namespace SoftUNI.WebAPI.Logica.Documentos
             return file;
         }
 
-        public void ConvertirBase64toPDF(string base64,string ruta)
+        public void ConvertirBase64toPDF(string base64, string ruta)
         {
             Byte[] bytes = Convert.FromBase64String(base64);
             File.WriteAllBytes(ruta, bytes);
@@ -62,7 +68,12 @@ namespace SoftUNI.WebAPI.Logica.Documentos
         //Documentos Requeridos
         public List<Documento> ConsultarDocumentosRequeridos(int id_usuario = 0)
         {
-            return _documentosDataContext.ConsultarDocumentosRequeridos(id_usuario);
+            var documentos = _documentosDataContext.ConsultarDocumentosRequeridos(id_usuario);
+            foreach (var item in documentos)
+            {
+                item.DescripcionEstado = new EstadosLogica().ConsultarEstados().Where(x => x.ID == item.Estado).ToList().Select(x => x.Estado).FirstOrDefault();
+            }
+            return documentos ;
         }
 
         public void InsertDocumentoRequerido(Documento documento)
