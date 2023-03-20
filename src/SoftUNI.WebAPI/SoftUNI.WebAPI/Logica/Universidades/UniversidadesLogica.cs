@@ -34,5 +34,10 @@ namespace SoftUNI.WebAPI.Logica.Universidades
         {
            return _universidadDataContext.ConsultarSolicitud(id_user);
         }
+
+        public List<Solicitud> ConsultarTodasSolicitudes()
+        {
+            return _universidadDataContext.ConsultarTodasSolicitudes();
+        }
     }
 }

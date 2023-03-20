@@ -62,6 +62,12 @@ namespace SoftUNI.WebAPI.Controllers
             ResponseDocumento respuesta = new ResponseDocumento();
             try
             {
+                if (_documentosLogica.ExisteDocumentoSolicitud(documento))
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "Ya se Cargo Este Documento";
+                    return respuesta;
+                }
                 documento.Estado = 6;
                 //documento.Ruta = _documentosLogica.ConvertirPDFtoBase64(documento.Ruta);
                 _documentosLogica.InsertDocumento(documento);

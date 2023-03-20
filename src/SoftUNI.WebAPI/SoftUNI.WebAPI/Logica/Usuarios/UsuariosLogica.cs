@@ -38,6 +38,10 @@ namespace SoftUNI.WebAPI.Logica.Usuarios
             _usuarioData.ActualizarUsuario(usuario);
         }
 
+        public void InscribirUsuario(int id_user)
+        {
+            _usuarioData.InscribirUsuario(id_user);
+        }
         public bool ExisteUsuario(string cedula)
         {
             return _usuarioData.ExisteUsuario(cedula);

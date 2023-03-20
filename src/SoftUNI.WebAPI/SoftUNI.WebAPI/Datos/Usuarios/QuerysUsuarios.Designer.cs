@@ -129,7 +129,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///      ,Sector
         ///      ,Residencia
         ///	  ,Matricula
-        ///	  ,Tipo
+        ///	  ,Tipo, Inscrito
         ///  FROM dbo.Usuario where ID_Usuario = @id.
         /// </summary>
         internal static string ConsultaUsuario {
@@ -153,6 +153,15 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         internal static string GenerarMatricula {
             get {
                 return ResourceManager.GetString("GenerarMatricula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to update Usuario set inscrito = &apos;true&apos; where id_usuario=@id.
+        /// </summary>
+        internal static string InscribirUsuario {
+            get {
+                return ResourceManager.GetString("InscribirUsuario", resourceCulture);
             }
         }
         
@@ -231,7 +240,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///      ,Provincia
         ///      ,Municipio
         ///      ,Sector
-        ///      ,Residencia
+        ///      ,Residencia,inscrito ,Matricula,tipo
         ///  FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave and activo = &apos;true&apos;.
         /// </summary>
         internal static string ValidaLoginUsuario {

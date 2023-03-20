@@ -108,6 +108,21 @@ namespace SoftUNI.WebAPI.Datos.Documentos
             }
         }
 
+        public bool ExisteDocumentoSolicitud(Documento documento)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.ExisteDocumentoSolicitud;
+                cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
+                cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return false;
+                return true;
+            }
+        }
 
         public decimal ConsultarTarifa(int id_doc)
         {
@@ -202,6 +217,20 @@ namespace SoftUNI.WebAPI.Datos.Documentos
             }
         }
 
-
+        public bool ExisteDocumentoRequerido(Documento documento)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.ExisteDocumentoRequerido;
+                cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
+                cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return false;
+                return true;
+            }
+        }
     }
 }

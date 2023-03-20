@@ -90,5 +90,17 @@ namespace SoftUNI.WebAPI.Logica.Documentos
         {
             _documentosDataContext.BorrarDocumentoRequerido(id_doc, id_user);
         }
+
+        public bool ExisteDocumentoSolicitud(Documento documento)
+        {
+            return _documentosDataContext.ExisteDocumentoSolicitud(documento);
+        }
+
+        public bool ExisteDocumentoRequerido(Documento documento)
+        {
+            return _documentosDataContext.ExisteDocumentoRequerido(documento);
+        }
+
+
     }
 }

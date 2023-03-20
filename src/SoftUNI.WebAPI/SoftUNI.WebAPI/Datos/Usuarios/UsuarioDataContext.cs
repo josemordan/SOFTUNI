@@ -76,7 +76,8 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                     Sector = dr.IsDBNull(dr.GetOrdinal("Sector")) ? string.Empty : dr["Sector"].ToString(),
                     Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString(),
                     Matricula = dr.IsDBNull(dr.GetOrdinal("Matricula")) ? string.Empty : dr["Matricula"].ToString(),
-                    Tipo = dr.IsDBNull(dr.GetOrdinal("Tipo")) ? 0 : int.Parse(dr["Tipo"].ToString())
+                    Tipo = dr.IsDBNull(dr.GetOrdinal("Tipo")) ? 0 : int.Parse(dr["Tipo"].ToString()),
+                    Inscrito = dr.IsDBNull(dr.GetOrdinal("Inscrito")) ? false : bool.Parse(dr["Inscrito"].ToString())
                 };
                 return usuario;
             }
@@ -196,7 +197,10 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                     Provincia = dr.IsDBNull(dr.GetOrdinal("Provincia")) ? string.Empty : dr["Provincia"].ToString(),
                     Municipio = dr.IsDBNull(dr.GetOrdinal("Municipio")) ? string.Empty : dr["Municipio"].ToString(),
                     Sector = dr.IsDBNull(dr.GetOrdinal("Sector")) ? string.Empty : dr["Sector"].ToString(),
-                    Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString()
+                    Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString(),
+                    Inscrito = dr.IsDBNull(dr.GetOrdinal("inscrito")) ? false : bool.Parse(dr["inscrito"].ToString()),
+                    Matricula = dr.IsDBNull(dr.GetOrdinal("Matricula")) ? string.Empty : dr["Matricula"].ToString(),
+                    Tipo = dr.IsDBNull(dr.GetOrdinal("tipo")) ? 0 : int.Parse(dr["tipo"].ToString()),
                 };
                 return usuario;
             }
@@ -238,6 +242,19 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 cmd.CommandTimeout = 0;
                 cmd.CommandText = QuerysUsuarios.ActualizarMatriculaUsuario;
                 cmd.Parameters.AddWithValue("matricula", matricula);
+                cmd.Parameters.AddWithValue("id", id_user);
+                cmd.ExecuteNonQuery();
+            }
+        } 
+        
+        public void InscribirUsuario(int id_user)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.InscribirUsuario;
                 cmd.Parameters.AddWithValue("id", id_user);
                 cmd.ExecuteNonQuery();
             }

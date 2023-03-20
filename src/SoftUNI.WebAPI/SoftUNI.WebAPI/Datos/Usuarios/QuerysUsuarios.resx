@@ -185,7 +185,7 @@
       ,Sector
       ,Residencia
 	  ,Matricula
-	  ,Tipo
+	  ,Tipo, Inscrito
   FROM dbo.Usuario where ID_Usuario = @id</value>
     <comment>SELECT  ID_Usuario
       ,Nombres
@@ -211,6 +211,9 @@
   </data>
   <data name="GenerarMatricula" xml:space="preserve">
     <value>select max(matricula) Matricula from Matriculas</value>
+  </data>
+  <data name="InscribirUsuario" xml:space="preserve">
+    <value>update Usuario set inscrito = 'true' where id_usuario=@id</value>
   </data>
   <data name="InsertarMatricula" xml:space="preserve">
     <value>insert into Matriculas values(@matricula)</value>
@@ -313,7 +316,7 @@
       ,Provincia
       ,Municipio
       ,Sector
-      ,Residencia
+      ,Residencia,inscrito ,Matricula,tipo
   FROM dbo.Usuario where (Correo = @user or Identificacion = @user) and clave = @clave and activo = 'true'</value>
   </data>
 </root>

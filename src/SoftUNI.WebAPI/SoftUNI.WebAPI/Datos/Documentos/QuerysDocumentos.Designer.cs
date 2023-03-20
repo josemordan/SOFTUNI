@@ -144,6 +144,24 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to select id from dbo.RelacionEstuDocRequeridos WHERE ID_Doc_Req = @ID_Documento and ID_Usuario = @ID_Usuario.
+        /// </summary>
+        internal static string ExisteDocumentoRequerido {
+            get {
+                return ResourceManager.GetString("ExisteDocumentoRequerido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select id from dbo.RelacionEstudiantesDocumentos WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario.
+        /// </summary>
+        internal static string ExisteDocumentoSolicitud {
+            get {
+                return ResourceManager.GetString("ExisteDocumentoSolicitud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO dbo.RelacionEstudiantesDocumentos
         ///           (ID_Documento
         ///           ,ID_Usuario

@@ -1,4 +1,5 @@
 ﻿using SoftUNI.WebAPI.Logica.Universidades;
+using SoftUNI.WebAPI.Logica.Usuarios;
 using SoftUNI.WebAPI.Models.Universidades;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,7 @@ namespace SoftUNI.WebAPI.Controllers
             }
             return respuesta;
         }
+       
 
         // GET: api/Universidades/5
         public ResponseUniversidad Get(int id)
@@ -93,6 +95,38 @@ namespace SoftUNI.WebAPI.Controllers
             return respuesta;
         }
 
+        public ResponseSolicitud GetTodasSolicitudes(int id_uni)
+        {
+            ResponseSolicitud respuesta = new ResponseSolicitud();
+            try
+            {
+                var solicitudes = _universidadesLogica.ConsultarTodasSolicitudes();
+                if (id_uni != 0) solicitudes = solicitudes.Where(x => x.ID_Universidad == id_uni).ToList();
+                if (solicitudes == null || solicitudes.Count==0)
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "No hay Solicitudes Activas";
+                    return respuesta;
+                }
+                foreach (var item in solicitudes)
+                {
+                    item.NombreCarrera = _universidadesLogica.ConsultarCarrera().Where(x => x.ID == item.ID_Carrera).Select(x => x.Nombre).FirstOrDefault();
+                    item.NombreUniversidad = _universidadesLogica.ConsultarUniversidades().Where(x => x.ID == item.ID_Universidad).Select(x => x.Nombre).FirstOrDefault();
+                    item.NombreUsuario = new UsuariosLogica().ConsultaUsuario(item.ID_Usuario).Nombres;
+                }
+                
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Solicitudes Consultadas Con Exito";
+                respuesta.Solcitudes = solicitudes;
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
+
         // POST: api/Universidades
         public ResponseUniversidad Post([FromBody] Universidad universidad)
         {
@@ -100,6 +134,7 @@ namespace SoftUNI.WebAPI.Controllers
             try
             {
                 _universidadesLogica.InsertarSolicitud(universidad);
+                new UsuariosLogica().InscribirUsuario(universidad.ID_Usuario);
                 var universidades = _universidadesLogica.ConsultarUniversidades();
                 var carreras = _universidadesLogica.ConsultarCarrera();
                 foreach (var item in universidades)

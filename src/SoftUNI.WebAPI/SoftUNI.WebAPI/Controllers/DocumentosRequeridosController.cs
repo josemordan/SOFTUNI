@@ -62,7 +62,13 @@ namespace SoftUNI.WebAPI.Controllers
             ResponseDocumento respuesta = new ResponseDocumento();
             try
             {
-                documento.Estado = 2;
+                if (_documentosLogica.ExisteDocumentoRequerido(documento))
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "Ya se Cargo Este Documento";
+                    return respuesta;
+                }
+                    documento.Estado = 2;
                 documento.Ruta = documento.Ruta;
                 _documentosLogica.InsertDocumentoRequerido(documento);
                 respuesta.Respuesta = true;

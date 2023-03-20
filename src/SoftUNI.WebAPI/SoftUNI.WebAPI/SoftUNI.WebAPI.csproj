@@ -210,6 +210,7 @@
     <Compile Include="Models\Estados\EstadosDocumentos.cs" />
     <Compile Include="Models\Estados\ResponseEstados.cs" />
     <Compile Include="Models\Universidades\Carrera.cs" />
+    <Compile Include="Models\Universidades\ResponseSolicitud.cs" />
     <Compile Include="Models\Universidades\ResponseUniversidad.cs" />
     <Compile Include="Models\Universidades\Solicitud.cs" />
     <Compile Include="Models\Universidades\Universidad.cs" />

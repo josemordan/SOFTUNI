@@ -25,5 +25,6 @@ namespace SoftUNI.WebAPI.Models.Usuarios
         public string Residencia { get; set; }
         public string Matricula { get; set; }
         public int Tipo { get; set; }
+        public bool Inscrito { get; set; }
     }
 }

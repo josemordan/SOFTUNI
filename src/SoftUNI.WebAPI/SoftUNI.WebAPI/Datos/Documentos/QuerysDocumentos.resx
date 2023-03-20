@@ -182,6 +182,12 @@
   FROM dbo.DocumentosRequeridos b
   left join  dbo.RelacionEstuDocRequeridos a on a.ID_Doc_Req =b.ID and id_usuario=@id</value>
   </data>
+  <data name="ExisteDocumentoRequerido" xml:space="preserve">
+    <value>select id from dbo.RelacionEstuDocRequeridos WHERE ID_Doc_Req = @ID_Documento and ID_Usuario = @ID_Usuario</value>
+  </data>
+  <data name="ExisteDocumentoSolicitud" xml:space="preserve">
+    <value>select id from dbo.RelacionEstudiantesDocumentos WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</value>
+  </data>
   <data name="InsertarDocumento" xml:space="preserve">
     <value>INSERT INTO dbo.RelacionEstudiantesDocumentos
            (ID_Documento
