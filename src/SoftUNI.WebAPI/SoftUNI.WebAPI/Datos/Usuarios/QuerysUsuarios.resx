@@ -226,6 +226,40 @@
 			   ,Identificacion
 			   ,Correo
 			   ,Clave
+			   ,Fecha_Nacimiento
+			   ,Lugar_Nacimiento
+			   ,Nacionalidad
+			   ,Region
+			   ,Provincia
+			   ,Municipio
+			   ,Sector
+			   ,Residencia
+			   ,Tipo
+		  )
+     VALUES
+           (
+				@Nombre
+			   ,@Apellidos
+			   ,@Identificacion
+			   ,@Correo
+			   ,@Clave
+			   ,@Fecha_Nacimiento
+			   ,@Lugar_Nacimiento
+			   ,@Nacionalidad
+			   ,@Region
+			   ,@Provincia
+			   ,@Municipio
+			   ,@Sector
+			   ,@Residencia
+			   ,@tipo
+		   )</value>
+    <comment>INSERT INTO dbo.Usuario
+           (
+				Nombres
+			   ,Apellidos
+			   ,Identificacion
+			   ,Correo
+			   ,Clave
 			   ,Telefono
 			   ,Celular
 			   ,Fecha_Nacimiento
@@ -256,42 +290,6 @@
 			   ,@Sector
 			   ,@Residencia
 			   ,@tipo
-		   )</value>
-    <comment>INSERT INTO dbo.Usuario
-           (
-				Nombres
-			   ,Apellidos
-			   ,Identificacion
-			   ,Correo
-			   ,Clave
-			   ,Telefono
-			   ,Celular
-			   ,Fecha_Nacimiento
-			   ,Lugar_Nacimiento
-			   ,Nacionalidad
-			   ,Region
-			   ,Provincia
-			   ,Municipio
-			   ,Sector
-			   ,Residencia
-		  )
-     VALUES
-           (
-				@Nombre
-			   ,@Apellidos
-			   ,@Identificacion
-			   ,@Correo
-			   ,@Clave
-			   ,@Telefono
-			   ,@Celular
-			   ,@Fecha_Nacimiento
-			   ,@Lugar_Nacimiento
-			   ,@Nacionalidad
-			   ,@Region
-			   ,@Provincia
-			   ,@Municipio
-			   ,@Sector
-			   ,@Residencia
 		   )</comment>
   </data>
   <data name="ValidaExisteUser" xml:space="preserve">

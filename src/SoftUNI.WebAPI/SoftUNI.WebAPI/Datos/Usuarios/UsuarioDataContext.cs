@@ -124,8 +124,8 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
                 cmd.Parameters.AddWithValue("Identificacion", usuario.Identificacion);
                 cmd.Parameters.AddWithValue("Correo", usuario.Correo);
                 cmd.Parameters.AddWithValue("Clave", usuario.Clave);
-                cmd.Parameters.AddWithValue("Telefono", usuario.Telefono);
-                cmd.Parameters.AddWithValue("Celular", usuario.Celular);
+                //cmd.Parameters.AddWithValue("Telefono", usuario.Telefono);
+                //cmd.Parameters.AddWithValue("Celular", usuario.Celular);
                 cmd.Parameters.AddWithValue("Fecha_Nacimiento", usuario.Fecha_Nacimiento);
                 cmd.Parameters.AddWithValue("Lugar_Nacimiento", usuario.Lugar_Nacimiento);
                 cmd.Parameters.AddWithValue("Nacionalidad", usuario.Nacionalidad);

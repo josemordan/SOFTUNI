@@ -182,8 +182,6 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///			   ,Identificacion
         ///			   ,Correo
         ///			   ,Clave
-        ///			   ,Telefono
-        ///			   ,Celular
         ///			   ,Fecha_Nacimiento
         ///			   ,Lugar_Nacimiento
         ///			   ,Nacionalidad
@@ -201,10 +199,11 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         ///			   ,@Identificacion
         ///			   ,@Correo
         ///			   ,@Clave
-        ///			   ,@Telefono
-        ///			   ,@Celular
         ///			   ,@Fecha_Nacimiento
-        ///			    [rest of string was truncated]&quot;;.
+        ///			   ,@Lugar_Nacimiento
+        ///			   ,@Nacionalidad
+        ///			   ,@Region
+        ///			   ,@Pr [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InsertarUsuario {
             get {
