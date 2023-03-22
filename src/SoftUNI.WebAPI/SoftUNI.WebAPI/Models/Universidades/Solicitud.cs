@@ -14,5 +14,7 @@ namespace SoftUNI.WebAPI.Models.Universidades
         public string NombreUsuario { get; set; }
         public int ID_Carrera { get; set; }
         public string NombreCarrera { get; set; }
+        public int Estado { get; set; }
+        public string DescripcionEstado { get; set; }
     }
 }

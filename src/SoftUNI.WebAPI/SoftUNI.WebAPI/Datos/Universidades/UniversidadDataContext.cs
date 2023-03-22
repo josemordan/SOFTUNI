@@ -93,7 +93,9 @@ namespace SoftUNI.WebAPI.Datos.Universidades
                     ID = dr.IsDBNull(dr.GetOrdinal("ID")) ? 0 : int.Parse(dr["ID"].ToString()),
                     ID_Usuario = dr.IsDBNull(dr.GetOrdinal("us")) ? 0 : int.Parse(dr["us"].ToString()),
                     ID_Universidad = dr.IsDBNull(dr.GetOrdinal("uni")) ? 0 : int.Parse(dr["uni"].ToString()),
-                    ID_Carrera = dr.IsDBNull(dr.GetOrdinal("carr")) ? 0 : int.Parse(dr["carr"].ToString())
+                    ID_Carrera = dr.IsDBNull(dr.GetOrdinal("carr")) ? 0 : int.Parse(dr["carr"].ToString()),
+                    Estado = dr.IsDBNull(dr.GetOrdinal("Estado")) ? 0 : int.Parse(dr["Estado"].ToString())
+
                 };
                 return solicitud;
             }
@@ -119,10 +121,25 @@ namespace SoftUNI.WebAPI.Datos.Universidades
                         ID = dr.IsDBNull(dr.GetOrdinal("ID")) ? 0 : int.Parse(dr["ID"].ToString()),
                         ID_Usuario = dr.IsDBNull(dr.GetOrdinal("us")) ? 0 : int.Parse(dr["us"].ToString()),
                         ID_Universidad = dr.IsDBNull(dr.GetOrdinal("uni")) ? 0 : int.Parse(dr["uni"].ToString()),
-                        ID_Carrera = dr.IsDBNull(dr.GetOrdinal("carr")) ? 0 : int.Parse(dr["carr"].ToString())
+                        ID_Carrera = dr.IsDBNull(dr.GetOrdinal("carr")) ? 0 : int.Parse(dr["carr"].ToString()),
+                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado")) ? 0 : int.Parse(dr["Estado"].ToString())
                     });
                 }
                 return lista;
+            }
+        }
+
+        public void ActualizarSolicitud(int id_solicitud, int estado)
+        {
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUniversidades.ActualizarEstadoSolicitud;
+                cmd.Parameters.AddWithValue("estado", estado);
+                cmd.Parameters.AddWithValue("id", id_solicitud);
+              cmd.ExecuteNonQuery();
             }
         }
     }

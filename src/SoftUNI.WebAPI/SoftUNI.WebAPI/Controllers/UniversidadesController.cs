@@ -1,4 +1,5 @@
-﻿using SoftUNI.WebAPI.Logica.Universidades;
+﻿using SoftUNI.WebAPI.Logica.Estados;
+using SoftUNI.WebAPI.Logica.Universidades;
 using SoftUNI.WebAPI.Logica.Usuarios;
 using SoftUNI.WebAPI.Models.Universidades;
 using System;
@@ -113,6 +114,7 @@ namespace SoftUNI.WebAPI.Controllers
                     item.NombreCarrera = _universidadesLogica.ConsultarCarrera().Where(x => x.ID == item.ID_Carrera).Select(x => x.Nombre).FirstOrDefault();
                     item.NombreUniversidad = _universidadesLogica.ConsultarUniversidades().Where(x => x.ID == item.ID_Universidad).Select(x => x.Nombre).FirstOrDefault();
                     item.NombreUsuario = new UsuariosLogica().ConsultaUsuario(item.ID_Usuario).Nombres;
+                    item.DescripcionEstado = new EstadosLogica().ConsultarEstados().Where(x => x.ID == item.Estado).FirstOrDefault().Estado;
                 }
                 
                 respuesta.Respuesta = true;
@@ -153,15 +155,44 @@ namespace SoftUNI.WebAPI.Controllers
             return respuesta;
         }
 
-        //// PUT: api/Universidades/5
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT: api/Universidades/5
+        public ResponseSolicitud Put(int id_solicitud,int estado)
+        {
+            ResponseSolicitud respuesta = new ResponseSolicitud();
+            try
+            {
+                _universidadesLogica.ActualizarSolicitud(id_solicitud, estado);
+                var solicitudes = _universidadesLogica.ConsultarTodasSolicitudes();
+                if (solicitudes == null || solicitudes.Count == 0)
+                {
+                    respuesta.Respuesta = false;
+                    respuesta.Mensaje = "No hay Solicitudes Activas";
+                    return respuesta;
+                }
+                foreach (var item in solicitudes)
+                {
+                    item.NombreCarrera = _universidadesLogica.ConsultarCarrera().Where(x => x.ID == item.ID_Carrera).Select(x => x.Nombre).FirstOrDefault();
+                    item.NombreUniversidad = _universidadesLogica.ConsultarUniversidades().Where(x => x.ID == item.ID_Universidad).Select(x => x.Nombre).FirstOrDefault();
+                    item.NombreUsuario = new UsuariosLogica().ConsultaUsuario(item.ID_Usuario).Nombres;
+                    item.DescripcionEstado = new EstadosLogica().ConsultarEstados().Where(x => x.ID == item.Estado).FirstOrDefault().Estado;
+                }
+
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Solicitudes Consultadas Con Exito";
+                respuesta.Solcitudes = solicitudes;
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
 
         //// DELETE: api/Universidades/5
         //public void Delete(int id)
         //{
         //}
-        
+
     }
 }

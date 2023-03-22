@@ -61,6 +61,15 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to update dbo.SolicitudUniversidad set estado = @estado where ID =@id.
+        /// </summary>
+        internal static string ActualizarEstadoSolicitud {
+            get {
+                return ResourceManager.GetString("ActualizarEstadoSolicitud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT ID
         ///	  ,ID_Universidad
         ///      ,NOMBRE
@@ -77,6 +86,7 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         ///      ,ID_Estudiante as us
         ///      ,ID_Universidad as uni
         ///      ,ID_Carrera as carr
+        ///	  ,Estado
         ///  FROM dbo.SolicitudUniversidad where ID_Estudiante = @id.
         /// </summary>
         internal static string ConsultarSolicitudes {
@@ -89,7 +99,7 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         ///   Looks up a localized string similar to SELECT  ID
         ///      ,ID_Estudiante as us
         ///      ,ID_Universidad as uni
-        ///      ,ID_Carrera as carr
+        ///      ,ID_Carrera as carr,Estado
         ///  FROM dbo.SolicitudUniversidad.
         /// </summary>
         internal static string ConsultarTodasLasSolicitudes {

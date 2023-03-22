@@ -39,5 +39,11 @@ namespace SoftUNI.WebAPI.Logica.Universidades
         {
             return _universidadDataContext.ConsultarTodasSolicitudes();
         }
+
+        public void ActualizarSolicitud(int id_solicitud,int estado)
+        {
+            _universidadDataContext.ActualizarSolicitud(id_solicitud, estado);
+        }
+
     }
 }

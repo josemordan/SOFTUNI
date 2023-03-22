@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActualizarEstadoSolicitud" xml:space="preserve">
+    <value>update dbo.SolicitudUniversidad set estado = @estado where ID =@id</value>
+  </data>
   <data name="ConsultarCarreras" xml:space="preserve">
     <value>SELECT ID
 	  ,ID_Universidad
@@ -128,14 +131,25 @@
       ,ID_Estudiante as us
       ,ID_Universidad as uni
       ,ID_Carrera as carr
+	  ,Estado
   FROM dbo.SolicitudUniversidad where ID_Estudiante = @id</value>
+    <comment>SELECT top 1 ID
+      ,ID_Estudiante as us
+      ,ID_Universidad as uni
+      ,ID_Carrera as carr
+  FROM dbo.SolicitudUniversidad where ID_Estudiante = @id</comment>
   </data>
   <data name="ConsultarTodasLasSolicitudes" xml:space="preserve">
     <value>SELECT  ID
       ,ID_Estudiante as us
       ,ID_Universidad as uni
-      ,ID_Carrera as carr
+      ,ID_Carrera as carr,Estado
   FROM dbo.SolicitudUniversidad</value>
+    <comment>SELECT  ID
+      ,ID_Estudiante as us
+      ,ID_Universidad as uni
+      ,ID_Carrera as carr
+  FROM dbo.SolicitudUniversidad</comment>
   </data>
   <data name="ConsultarUniversidades" xml:space="preserve">
     <value>SELECT  ID
