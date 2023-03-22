@@ -115,6 +115,7 @@ namespace SoftUNI.WebAPI.Controllers
                     item.NombreUniversidad = _universidadesLogica.ConsultarUniversidades().Where(x => x.ID == item.ID_Universidad).Select(x => x.Nombre).FirstOrDefault();
                     item.NombreUsuario = new UsuariosLogica().ConsultaUsuario(item.ID_Usuario).Nombres;
                     item.DescripcionEstado = new EstadosLogica().ConsultarEstados().Where(x => x.ID == item.Estado).FirstOrDefault().Estado;
+                    item.Universidad = _universidadesLogica.ConsultarUniversidades().Where(x => x.ID == item.ID_Universidad).FirstOrDefault();
                 }
                 
                 respuesta.Respuesta = true;
