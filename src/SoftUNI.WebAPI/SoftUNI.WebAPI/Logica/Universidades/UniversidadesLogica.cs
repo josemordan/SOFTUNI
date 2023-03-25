@@ -25,7 +25,7 @@ namespace SoftUNI.WebAPI.Logica.Universidades
             return _universidadDataContext.ConsultarCarrera();
         }
 
-        public void InsertarSolicitud(Universidad solicitud)
+        public void InsertarSolicitud(Solicitud solicitud)
         {
             _universidadDataContext.InsertarSolicitud(solicitud);
         }

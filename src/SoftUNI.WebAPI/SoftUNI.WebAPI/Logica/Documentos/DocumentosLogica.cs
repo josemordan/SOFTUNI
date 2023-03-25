@@ -1,5 +1,6 @@
 ﻿using SoftUNI.WebAPI.Datos.Documentos;
 using SoftUNI.WebAPI.Logica.Estados;
+using SoftUNI.WebAPI.Logica.Usuarios;
 using SoftUNI.WebAPI.Models.Documentos;
 using System;
 using System.Collections.Generic;
@@ -32,9 +33,9 @@ namespace SoftUNI.WebAPI.Logica.Documentos
             _documentosDataContext.InsertarDocumento(documento);
         }
 
-        public void ActualizarDocumento(Documento documento)
+        public void ActualizarDocumento(SolicitudDocumento solicitud)
         {
-            _documentosDataContext.ActualizarDocumento(documento);
+            _documentosDataContext.ActualizarDocumento(solicitud);
         }
 
         public void BorrarDocumento(int id_doc, int id_user)
@@ -101,6 +102,22 @@ namespace SoftUNI.WebAPI.Logica.Documentos
             return _documentosDataContext.ExisteDocumentoRequerido(documento);
         }
 
+        public List<SolicitudDocumento> ConsultarTodasSolicitudes(int id)
+        {
+            var solicitudes = _documentosDataContext.ConsultarSolicitudes();
+            if (id != 0)
+            {
+                solicitudes = solicitudes.Where(x => x.ID == id).ToList();  
+            }
+            foreach (var item in solicitudes)
+            {
+                item.DescripcionEstado = new EstadosLogica().ConsultarEstados().Where(x => x.ID == item.Estado).Select(x => x.Estado).FirstOrDefault();
+                item.Usuario = new UsuariosLogica().ConsultaUsuario(item.ID_Usuario);
+                item.Nombre_Documento = ConsultarDocumentos(0).Where(x => x.ID == item.ID_Documento).Select(x => x.Nombre).FirstOrDefault();
+                item.Tarifa = ConsultarTarifas(item.ID_Documento);
+            }
+            return solicitudes;
+        }
 
     }
 }

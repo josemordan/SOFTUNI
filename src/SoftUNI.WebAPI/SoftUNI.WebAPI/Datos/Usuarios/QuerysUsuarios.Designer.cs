@@ -61,7 +61,7 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to update usuario set matricula = @matricula where ID_Usuario=@id.
+        ///   Looks up a localized string similar to update usuario set Inscrito = &apos;True&apos;, matricula = @matricula where ID_Usuario=@id.
         /// </summary>
         internal static string ActualizarMatriculaUsuario {
             get {
@@ -108,6 +108,33 @@ namespace SoftUNI.WebAPI.Datos.Usuarios {
         internal static string ConsultarInfoUsuarioDumy {
             get {
                 return ResourceManager.GetString("ConsultarInfoUsuarioDumy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT  ID_Usuario
+        ///      ,Nombres
+        ///      ,Apellidos
+        ///      ,Identificacion
+        ///      ,Correo
+        ///      ,&apos;&apos;Clave
+        ///      ,Telefono
+        ///      ,Celular
+        ///      ,Fecha_Nacimiento
+        ///      ,Lugar_Nacimiento
+        ///      ,Nacionalidad
+        ///      ,Region
+        ///      ,Provincia
+        ///      ,Municipio
+        ///      ,Sector
+        ///      ,Residencia
+        ///	  ,Matricula
+        ///	  ,Tipo, Inscrito
+        ///  FROM dbo.Usuario where Tipo = @tipo.
+        /// </summary>
+        internal static string ConsultarUsuarioPorTipo {
+            get {
+                return ResourceManager.GetString("ConsultarUsuarioPorTipo", resourceCulture);
             }
         }
         

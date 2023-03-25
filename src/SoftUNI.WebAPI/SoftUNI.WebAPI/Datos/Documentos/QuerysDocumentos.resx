@@ -121,11 +121,10 @@
     <value>UPDATE dbo.RelacionEstudiantesDocumentos
    SET Fecha = @Fecha
       ,Estado_Documento = @Estado_Documento  ,Ruta = @Ruta
- WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</value>
+ WHERE id = @id</value>
     <comment>UPDATE dbo.RelacionEstudiantesDocumentos
    SET Fecha = @Fecha
-      ,Estado_Documento = @Estado_Documento
-      ,Ruta = @Ruta
+      ,Estado_Documento = @Estado_Documento  ,Ruta = @Ruta
  WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario</comment>
   </data>
   <data name="ActualizarDocumentoRequerido" xml:space="preserve">
@@ -169,6 +168,17 @@
   FROM dbo.DocumentosEstudiantes b
   inner join dbo.Tarifas c on b.ID = c.ID_Documento
   left join  dbo.RelacionEstudiantesDocumentos a on a.ID_Documento =b.ID and id_usuario=@id</comment>
+  </data>
+  <data name="ConsultarTodasSolicitudes" xml:space="preserve">
+    <value>SELECT  ID
+      ,ID_Documento
+      ,ID_Usuario
+      ,Fecha
+      ,Estado_Documento as estado
+      ,Ruta
+      ,Fisico
+      ,Legalizado
+  FROM dbo.RelacionEstudiantesDocumentos</value>
   </data>
   <data name="ConsutlarDocumentosRequeridos" xml:space="preserve">
     <value>SELECT 
@@ -247,6 +257,6 @@
   <data name="ObtenerTarifaDocumento" xml:space="preserve">
     <value>SELECT 
       Monto
-  FROM dbo.Tarifas where id_docdumento=@doc</value>
+  FROM dbo.Tarifas where id_documento=@doc</value>
   </data>
 </root>

@@ -207,15 +207,19 @@
     <Compile Include="Logica\ValidaCedulas.cs" />
     <Compile Include="Models\Documentos\Documento.cs" />
     <Compile Include="Models\Documentos\ResponseDocumento.cs" />
+    <Compile Include="Models\Documentos\ResponseSolicitudDocumentos.cs" />
+    <Compile Include="Models\Documentos\SolicitudDocumento.cs" />
     <Compile Include="Models\Estados\EstadosDocumentos.cs" />
     <Compile Include="Models\Estados\ResponseEstados.cs" />
     <Compile Include="Models\Universidades\Carrera.cs" />
     <Compile Include="Models\Universidades\ResponseSolicitud.cs" />
+    <Compile Include="Models\Documentos\ResponseTotalSolicitudes.cs" />
     <Compile Include="Models\Universidades\ResponseUniversidad.cs" />
     <Compile Include="Models\Universidades\Solicitud.cs" />
     <Compile Include="Models\Universidades\Universidad.cs" />
     <Compile Include="Models\Usuarios\ResponseUsuario.cs" />
     <Compile Include="Logica\Usuarios\UsuariosLogica.cs" />
+    <Compile Include="Models\Usuarios\ResponseUsuariosTipo.cs" />
     <Compile Include="Models\Usuarios\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

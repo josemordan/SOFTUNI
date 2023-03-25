@@ -60,7 +60,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos
             }
         }
 
-        public void ActualizarDocumento(Documento documento)
+        public void ActualizarDocumento(SolicitudDocumento solicitud)
         {
             using (var cnn = new Conexion().ObtenerConexion())
             {
@@ -68,11 +68,10 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 var cmd = cnn.CreateCommand();
                 cmd.CommandTimeout = 0;
                 cmd.CommandText = QuerysDocumentos.ActualizarDocumento;
-                cmd.Parameters.AddWithValue("Fecha", documento.Fecha);
-                cmd.Parameters.AddWithValue("Estado_Documento", documento.Estado);
-                cmd.Parameters.AddWithValue("Ruta", documento.Ruta);
-                cmd.Parameters.AddWithValue("ID_Documento", documento.ID);
-                cmd.Parameters.AddWithValue("ID_Usuario", documento.ID_Usuario);
+                cmd.Parameters.AddWithValue("Fecha", solicitud.Fecha);
+                cmd.Parameters.AddWithValue("Estado_Documento", solicitud.Estado);
+                cmd.Parameters.AddWithValue("Ruta", solicitud.Ruta);
+                cmd.Parameters.AddWithValue("id", solicitud.ID);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -232,5 +231,35 @@ namespace SoftUNI.WebAPI.Datos.Documentos
                 return true;
             }
         }
+    
+        public List<SolicitudDocumento> ConsultarSolicitudes()
+        {
+            var lista = new List<SolicitudDocumento>();
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysDocumentos.ConsultarTodasSolicitudes;
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return lista;
+                while (dr.Read())
+                {
+                    lista.Add(new SolicitudDocumento
+                    {
+                        ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : int.Parse(dr["id"].ToString()),
+                        ID_Documento = dr.IsDBNull(dr.GetOrdinal("id_documento")) ? 0 : int.Parse(dr["id_documento"].ToString()),
+                        ID_Usuario = dr.IsDBNull(dr.GetOrdinal("ID_Usuario")) ? 0 : int.Parse(dr["ID_Usuario"].ToString()),
+                        Fecha = dr.IsDBNull(dr.GetOrdinal("Fecha")) ? new DateTime(1990, 1, 1) : DateTime.Parse(dr["Fecha"].ToString()),
+                        Estado = dr.IsDBNull(dr.GetOrdinal("estado")) ? 1 : int.Parse(dr["estado"].ToString()),
+                        Ruta = dr.IsDBNull(dr.GetOrdinal("Ruta")) ? string.Empty : dr["Ruta"].ToString(),
+                        Fisico = dr.IsDBNull(dr.GetOrdinal("Fisico")) ? false : Boolean.Parse(dr["Fisico"].ToString()),
+                        Legalizar = dr.IsDBNull(dr.GetOrdinal("Legalizado")) ? false : Boolean.Parse(dr["Legalizado"].ToString()),
+                    });
+                }
+                return lista;
+            }
+        }
+    
     }
 }

@@ -16,6 +16,7 @@ namespace SoftUNI.WebAPI.Models.Universidades
         public string NombreCarrera { get; set; }
         public int Estado { get; set; }
         public string DescripcionEstado { get; set; }
+        public DateTime Fecha { get; set; }
         public Universidad Universidad { get; set; }
     }
 }

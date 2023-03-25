@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActualizarMatriculaUsuario" xml:space="preserve">
-    <value>update usuario set matricula = @matricula where ID_Usuario=@id</value>
+    <value>update usuario set Inscrito = 'True', matricula = @matricula where ID_Usuario=@id</value>
   </data>
   <data name="ActualizarUsuario" xml:space="preserve">
     <value>UPDATE dbo.Usuario
@@ -166,6 +166,27 @@
       ,Sector
       ,Residencia
   FROM dbo.UsuarioDumy where Identificacion = @cedula</value>
+  </data>
+  <data name="ConsultarUsuarioPorTipo" xml:space="preserve">
+    <value>SELECT  ID_Usuario
+      ,Nombres
+      ,Apellidos
+      ,Identificacion
+      ,Correo
+      ,''Clave
+      ,Telefono
+      ,Celular
+      ,Fecha_Nacimiento
+      ,Lugar_Nacimiento
+      ,Nacionalidad
+      ,Region
+      ,Provincia
+      ,Municipio
+      ,Sector
+      ,Residencia
+	  ,Matricula
+	  ,Tipo, Inscrito
+  FROM dbo.Usuario where Tipo = @tipo</value>
   </data>
   <data name="ConsultaUsuario" xml:space="preserve">
     <value>SELECT  ID_Usuario

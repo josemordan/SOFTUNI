@@ -18,7 +18,12 @@ namespace SoftUNI.WebAPI.Logica.Usuarios
         public Usuario ConsultaUsuario(int id)
         {
             var usuario = _usuarioData.ConsultarUsuario(id);
-            usuario.Clave = DesEncriptarClave(usuario.Clave);
+            usuario.Clave = "";
+            return usuario;
+        }
+        public List<Usuario> ConsultaUsuarioPorTipo(int tipo)
+        {
+            var usuario = _usuarioData.ConsultarUsuarioPorTipo(tipo);
             return usuario;
         }
 
@@ -54,7 +59,7 @@ namespace SoftUNI.WebAPI.Logica.Usuarios
 
         public long GenerarMatricula(int id_usuario)
         {
-            long matricula = _usuarioData.GenerarMatricula(id_usuario)+1;
+            long matricula = _usuarioData.GenerarMatricula(id_usuario) + 1;
             _usuarioData.InsertarMatricula(matricula);
             _usuarioData.ActualizarMatriculaUsuario(id_usuario, matricula);
             return matricula;
@@ -64,7 +69,7 @@ namespace SoftUNI.WebAPI.Logica.Usuarios
         public Usuario ValidaLogin(string user, string clave)
         {
             var usuario = _usuarioData.ValidaLogin(user, EncriptarClave(clave));
-            if (usuario != null) usuario.Clave = DesEncriptarClave(usuario.Clave);
+            if (usuario != null) usuario.Clave = "";
             return usuario;
         }
 

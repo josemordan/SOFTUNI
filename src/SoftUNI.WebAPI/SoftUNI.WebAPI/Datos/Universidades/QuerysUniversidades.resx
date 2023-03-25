@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActualizarEstadoSolicitud" xml:space="preserve">
-    <value>update dbo.SolicitudUniversidad set estado = @estado where ID =@id</value>
+    <value>update dbo.SolicitudUniversidad set estado = @estado, fecha =@fecha where ID =@id</value>
   </data>
   <data name="ConsultarCarreras" xml:space="preserve">
     <value>SELECT ID
@@ -143,7 +143,7 @@
     <value>SELECT  ID
       ,ID_Estudiante as us
       ,ID_Universidad as uni
-      ,ID_Carrera as carr,Estado
+      ,ID_Carrera as carr,Estado,Fecha
   FROM dbo.SolicitudUniversidad</value>
     <comment>SELECT  ID
       ,ID_Estudiante as us
@@ -166,10 +166,23 @@
     <value>INSERT INTO dbo.SolicitudUniversidad
            (ID_Estudiante
            ,ID_Universidad
+           ,ID_Carrera
+		   ,Fecha
+		   ,Estado
+		  )
+     VALUES
+           (@ID_Estudiante
+           ,@ID_Universidad
+           ,@ID_Carrera
+		   ,@Fecha
+		   ,@Estado)</value>
+    <comment>INSERT INTO dbo.SolicitudUniversidad
+           (ID_Estudiante
+           ,ID_Universidad
            ,ID_Carrera)
      VALUES
            (@ID_Estudiante
            ,@ID_Universidad
-           ,@ID_Carrera)</value>
+           ,@ID_Carrera)</comment>
   </data>
 </root>

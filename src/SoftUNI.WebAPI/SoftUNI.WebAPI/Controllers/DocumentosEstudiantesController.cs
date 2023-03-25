@@ -84,15 +84,15 @@ namespace SoftUNI.WebAPI.Controllers
         }
 
         // PUT: api/DocumentosEstudiantes/5
-        public ResponseDocumento Put([FromBody] Documento documento)
+        public ResponseSolicitudDocumentos Put([FromBody] SolicitudDocumento solicitud)
         {
-            ResponseDocumento respuesta = new ResponseDocumento();
+            ResponseSolicitudDocumentos respuesta = new ResponseSolicitudDocumentos();
             try
             {
-                _documentosLogica.ActualizarDocumento(documento);
+                _documentosLogica.ActualizarDocumento(solicitud);
                 respuesta.Respuesta = true;
                 respuesta.Mensaje = "Documento Actualizado Correctamente";
-                respuesta.Documentos = _documentosLogica.ConsultarDocumentos();
+                respuesta.Solicitud = _documentosLogica.ConsultarTodasSolicitudes(0);
             }
             catch (Exception ex)
             {
@@ -102,6 +102,48 @@ namespace SoftUNI.WebAPI.Controllers
             return respuesta;
         }
 
+        public ResponseSolicitudDocumentos ConsultarSolicitudes(int id_solicitud)
+        {
+            ResponseSolicitudDocumentos respuesta = new ResponseSolicitudDocumentos();
+            try
+            {
+              
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Solcitudes Consultadas Con Exito";
+                respuesta.Solicitud = _documentosLogica.ConsultarTodasSolicitudes(id_solicitud); 
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
+
+        public ResponseTotalSolicitudes GetConsultarTotalSolicitudes(int total)
+        {
+            ResponseTotalSolicitudes respuesta = new ResponseTotalSolicitudes();
+            try
+            {
+                var solicitudes= _documentosLogica.ConsultarTodasSolicitudes(0);
+                Cantidades cantidades = new Cantidades()
+                {
+                    TotalSolicitudAprobadas = solicitudes.Where(x => x.Estado == 5).ToList().Count(),
+                    TotalSolicitudLegalizado = solicitudes.Where(x => x.Estado == 4).ToList().Count(),
+                    TotalSolicitudPendiente = solicitudes.Where(x => x.Estado == 6).ToList().Count(),
+                    TotalSolicitudRechazadas = solicitudes.Where(x => x.Estado == 9).ToList().Count()
+                };                
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Solcitudes Consultadas Con Exito";
+                respuesta.Cantidades = cantidades;
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
 
         public ResponseDocumento GetTarifa(int documentoTarifa)
         {

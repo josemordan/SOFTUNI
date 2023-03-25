@@ -260,5 +260,45 @@ namespace SoftUNI.WebAPI.Datos.Usuarios
             }
         }
 
+        public List<Usuario> ConsultarUsuarioPorTipo(int tipo)
+        {
+            var list = new List<Usuario>();
+            using (var cnn = new Conexion().ObtenerConexion())
+            {
+                cnn.Open();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandTimeout = 0;
+                cmd.CommandText = QuerysUsuarios.ConsultarUsuarioPorTipo;
+                cmd.Parameters.AddWithValue("tipo", tipo);
+                var dr = cmd.ExecuteReader();
+                if (!dr.HasRows) return list;
+                while(dr.Read())
+                {
+                    list.Add(new Usuario
+                    {
+                        ID_Usuario = dr.IsDBNull(dr.GetOrdinal("ID_Usuario")) ? 0 : int.Parse(dr["ID_Usuario"].ToString()),
+                        Nombres = dr.IsDBNull(dr.GetOrdinal("Nombres")) ? string.Empty : dr["Nombres"].ToString(),
+                        Apellidos = dr.IsDBNull(dr.GetOrdinal("Apellidos")) ? string.Empty : dr["Apellidos"].ToString(),
+                        Identificacion = dr.IsDBNull(dr.GetOrdinal("Identificacion")) ? string.Empty : dr["Identificacion"].ToString(),
+                        Correo = dr.IsDBNull(dr.GetOrdinal("Correo")) ? string.Empty : dr["Correo"].ToString(),
+                        Clave = dr.IsDBNull(dr.GetOrdinal("Clave")) ? string.Empty : dr["Clave"].ToString(),
+                        Telefono = dr.IsDBNull(dr.GetOrdinal("Telefono")) ? string.Empty : dr["Telefono"].ToString(),
+                        Celular = dr.IsDBNull(dr.GetOrdinal("Celular")) ? string.Empty : dr["Celular"].ToString(),
+                        Fecha_Nacimiento = dr.IsDBNull(dr.GetOrdinal("Fecha_Nacimiento")) ? new DateTime(1900, 1, 1) : DateTime.Parse(dr["Fecha_Nacimiento"].ToString()),
+                        Lugar_Nacimiento = dr.IsDBNull(dr.GetOrdinal("Lugar_Nacimiento")) ? string.Empty : dr["Lugar_Nacimiento"].ToString(),
+                        Nacionalidad = dr.IsDBNull(dr.GetOrdinal("Nacionalidad")) ? string.Empty : dr["Nacionalidad"].ToString(),
+                        Region = dr.IsDBNull(dr.GetOrdinal("Region")) ? string.Empty : dr["Region"].ToString(),
+                        Provincia = dr.IsDBNull(dr.GetOrdinal("Provincia")) ? string.Empty : dr["Provincia"].ToString(),
+                        Municipio = dr.IsDBNull(dr.GetOrdinal("Municipio")) ? string.Empty : dr["Municipio"].ToString(),
+                        Sector = dr.IsDBNull(dr.GetOrdinal("Sector")) ? string.Empty : dr["Sector"].ToString(),
+                        Residencia = dr.IsDBNull(dr.GetOrdinal("Residencia")) ? string.Empty : dr["Residencia"].ToString(),
+                        Matricula = dr.IsDBNull(dr.GetOrdinal("Matricula")) ? string.Empty : dr["Matricula"].ToString(),
+                        Tipo = dr.IsDBNull(dr.GetOrdinal("Tipo")) ? 0 : int.Parse(dr["Tipo"].ToString()),
+                        Inscrito = dr.IsDBNull(dr.GetOrdinal("Inscrito")) ? false : bool.Parse(dr["Inscrito"].ToString())
+                    });
+                }
+                return list ;
+            }
+        }
     }
 }

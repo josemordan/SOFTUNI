@@ -61,7 +61,7 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to update dbo.SolicitudUniversidad set estado = @estado where ID =@id.
+        ///   Looks up a localized string similar to update dbo.SolicitudUniversidad set estado = @estado, fecha =@fecha where ID =@id.
         /// </summary>
         internal static string ActualizarEstadoSolicitud {
             get {
@@ -99,7 +99,7 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         ///   Looks up a localized string similar to SELECT  ID
         ///      ,ID_Estudiante as us
         ///      ,ID_Universidad as uni
-        ///      ,ID_Carrera as carr,Estado
+        ///      ,ID_Carrera as carr,Estado,Fecha
         ///  FROM dbo.SolicitudUniversidad.
         /// </summary>
         internal static string ConsultarTodasLasSolicitudes {
@@ -129,11 +129,16 @@ namespace SoftUNI.WebAPI.Datos.Universidades {
         ///   Looks up a localized string similar to INSERT INTO dbo.SolicitudUniversidad
         ///           (ID_Estudiante
         ///           ,ID_Universidad
-        ///           ,ID_Carrera)
+        ///           ,ID_Carrera
+        ///		   ,Fecha
+        ///		   ,Estado
+        ///		  )
         ///     VALUES
         ///           (@ID_Estudiante
         ///           ,@ID_Universidad
-        ///           ,@ID_Carrera).
+        ///           ,@ID_Carrera
+        ///		   ,@Fecha
+        ///		   ,@Estado).
         /// </summary>
         internal static string InsertarSolicitud {
             get {

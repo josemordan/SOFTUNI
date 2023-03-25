@@ -46,6 +46,26 @@ namespace SoftUNI.WebAPI.Controllers
             return respuesta;
         }
 
+        public ResponseUsuariosTipo GetUsuariosTipo(int tipo)
+        {
+            ResponseUsuariosTipo respuesta = new ResponseUsuariosTipo();
+            try
+            {
+                var usuario = _usuariosLogica.ConsultaUsuarioPorTipo(tipo);
+                respuesta.Respuesta = true;
+                respuesta.Mensaje = "Consultados Correctamente";
+                respuesta.Usuarios = usuario;
+            }
+            catch (Exception ex)
+            {
+                respuesta.Respuesta = false;
+                respuesta.Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
+
+
+
         // POST: api/Usuarios
         public ResponseUsuario Post([FromBody] Usuario usuario)
         {

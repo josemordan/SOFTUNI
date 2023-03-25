@@ -61,7 +61,7 @@ namespace SoftUNI.WebAPI.Datos.Universidades
             }
         }
 
-        public void InsertarSolicitud(Universidad solicitud)
+        public void InsertarSolicitud(Solicitud solicitud)
         {
             using (var cnn = new Conexion().ObtenerConexion())
             {
@@ -70,8 +70,10 @@ namespace SoftUNI.WebAPI.Datos.Universidades
                 cmd.CommandTimeout = 0;
                 cmd.CommandText = QuerysUniversidades.InsertarSolicitud;
                 cmd.Parameters.AddWithValue("ID_Estudiante", solicitud.ID_Usuario);
-                cmd.Parameters.AddWithValue("ID_Universidad", solicitud.ID);
+                cmd.Parameters.AddWithValue("ID_Universidad", solicitud.ID_Universidad);
                 cmd.Parameters.AddWithValue("ID_Carrera", solicitud.ID_Carrera);
+                cmd.Parameters.AddWithValue("Fecha", solicitud.Fecha);
+                cmd.Parameters.AddWithValue("Estado", solicitud.Estado);
                 var dr = cmd.ExecuteReader();
             }
         }
@@ -122,7 +124,8 @@ namespace SoftUNI.WebAPI.Datos.Universidades
                         ID_Usuario = dr.IsDBNull(dr.GetOrdinal("us")) ? 0 : int.Parse(dr["us"].ToString()),
                         ID_Universidad = dr.IsDBNull(dr.GetOrdinal("uni")) ? 0 : int.Parse(dr["uni"].ToString()),
                         ID_Carrera = dr.IsDBNull(dr.GetOrdinal("carr")) ? 0 : int.Parse(dr["carr"].ToString()),
-                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado")) ? 0 : int.Parse(dr["Estado"].ToString())
+                        Estado = dr.IsDBNull(dr.GetOrdinal("Estado")) ? 0 : int.Parse(dr["Estado"].ToString()),
+                        Fecha = dr.IsDBNull(dr.GetOrdinal("Fecha")) ? new DateTime(2000,1,1) : DateTime.Parse(dr["Fecha"].ToString())
                     });
                 }
                 return lista;
@@ -138,6 +141,7 @@ namespace SoftUNI.WebAPI.Datos.Universidades
                 cmd.CommandTimeout = 0;
                 cmd.CommandText = QuerysUniversidades.ActualizarEstadoSolicitud;
                 cmd.Parameters.AddWithValue("estado", estado);
+                cmd.Parameters.AddWithValue("fecha", DateTime.Now);
                 cmd.Parameters.AddWithValue("id", id_solicitud);
               cmd.ExecuteNonQuery();
             }

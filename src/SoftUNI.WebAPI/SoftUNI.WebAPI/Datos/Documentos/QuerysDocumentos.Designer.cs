@@ -64,7 +64,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         ///   Looks up a localized string similar to UPDATE dbo.RelacionEstudiantesDocumentos
         ///   SET Fecha = @Fecha
         ///      ,Estado_Documento = @Estado_Documento  ,Ruta = @Ruta
-        /// WHERE ID_Documento = @ID_Documento and ID_Usuario = @ID_Usuario.
+        /// WHERE id = @id.
         /// </summary>
         internal static string ActualizarDocumento {
             get {
@@ -122,6 +122,23 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         internal static string ConsultarDocumentos {
             get {
                 return ResourceManager.GetString("ConsultarDocumentos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT  ID
+        ///      ,ID_Documento
+        ///      ,ID_Usuario
+        ///      ,Fecha
+        ///      ,Estado_Documento as estado
+        ///      ,Ruta
+        ///      ,Fisico
+        ///      ,Legalizado
+        ///  FROM dbo.RelacionEstudiantesDocumentos.
+        /// </summary>
+        internal static string ConsultarTodasSolicitudes {
+            get {
+                return ResourceManager.GetString("ConsultarTodasSolicitudes", resourceCulture);
             }
         }
         
@@ -221,7 +238,7 @@ namespace SoftUNI.WebAPI.Datos.Documentos {
         /// <summary>
         ///   Looks up a localized string similar to SELECT 
         ///      Monto
-        ///  FROM dbo.Tarifas where id_docdumento=@doc.
+        ///  FROM dbo.Tarifas where id_documento=@doc.
         /// </summary>
         internal static string ObtenerTarifaDocumento {
             get {
